@@ -18,7 +18,7 @@ namespace MVVMFirma.Views
     /// <summary>
     /// Logika interakcji dla klasy WszystkieRodzajeCzlonkostwaView.xaml
     /// </summary>
-    public partial class WszystkieRodzajeCzlonkostwaView : UserControl
+    public partial class WszystkieRodzajeCzlonkostwaView : WszystkieViewBase
     {
         public WszystkieRodzajeCzlonkostwaView()
         {

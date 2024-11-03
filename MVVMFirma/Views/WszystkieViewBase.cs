@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -14,14 +15,11 @@ using System.Windows.Shapes;
 
 namespace MVVMFirma.Views
 {
-    /// <summary>
-    /// Interaction logic for WszystkieTowaryView.xaml
-    /// </summary>
-    public partial class WszystkieTowaryView : UserControl
+    public class WszystkieViewBase : UserControl
     {
-        public WszystkieTowaryView()
+        static WszystkieViewBase()
         {
-            InitializeComponent();
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(WszystkieViewBase), new FrameworkPropertyMetadata(typeof(WszystkieViewBase)));
         }
     }
 }

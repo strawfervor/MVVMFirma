@@ -18,7 +18,7 @@ namespace MVVMFirma.Views
     /// <summary>
     /// Logika interakcji dla klasy WszystkieRezerwacjeView.xaml
     /// </summary>
-    public partial class WszystkieRezerwacjeView : UserControl
+    public partial class WszystkieRezerwacjeView : WszystkieViewBase
     {
         public WszystkieRezerwacjeView()
         {

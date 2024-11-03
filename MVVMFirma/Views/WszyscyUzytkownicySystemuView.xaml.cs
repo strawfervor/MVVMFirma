@@ -18,7 +18,7 @@ namespace MVVMFirma.Views
     /// <summary>
     /// Logika interakcji dla klasy WszyscyUzytkownicySystemuView.xaml
     /// </summary>
-    public partial class WszyscyUzytkownicySystemuView : UserControl
+    public partial class WszyscyUzytkownicySystemuView : WszystkieViewBase
     {
         public WszyscyUzytkownicySystemuView()
         {

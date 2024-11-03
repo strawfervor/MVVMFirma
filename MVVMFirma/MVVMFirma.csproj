@@ -164,6 +164,7 @@
     <Compile Include="ViewModels\WszystkieRodzajeLiterackieViewModel.cs" />
     <Compile Include="ViewModels\WszystkieTagiViewModel.cs" />
     <Compile Include="ViewModels\WszystkieTowaryViewModel.cs" />
+    <Compile Include="ViewModels\WszystkieViewModel.cs" />
     <Compile Include="ViewModels\WszystkieWydawnictwaViewModel.cs" />
     <Compile Include="ViewModels\WszystkieWypozyczeniaViewModel.cs" />
     <Compile Include="ViewModels\WszystkieZgloszeniaViewModel.cs" />
@@ -255,9 +256,7 @@
     <Compile Include="Views\WszystkieTagiView.xaml.cs">
       <DependentUpon>WszystkieTagiView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\WszystkieTowaryView.xaml.cs">
-      <DependentUpon>WszystkieTowaryView.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Views\WszystkieViewBase.cs" />
     <Compile Include="Views\WszystkieWydawnictwaView.xaml.cs">
       <DependentUpon>WszystkieWydawnictwaView.xaml</DependentUpon>
     </Compile>
@@ -302,6 +301,10 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -419,10 +422,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\WszystkieTagiView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\WszystkieTowaryView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

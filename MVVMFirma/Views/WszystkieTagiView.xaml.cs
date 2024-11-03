@@ -18,7 +18,7 @@ namespace MVVMFirma.Views
     /// <summary>
     /// Logika interakcji dla klasy WszystkieTagiView.xaml
     /// </summary>
-    public partial class WszystkieTagiView : UserControl
+    public partial class WszystkieTagiView : WszystkieViewBase
     {
         public WszystkieTagiView()
         {

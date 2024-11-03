@@ -18,7 +18,7 @@ namespace MVVMFirma.Views
     /// <summary>
     /// Logika interakcji dla klasy WszystkieKaryView.xaml
     /// </summary>
-    public partial class WszystkieKaryView : UserControl
+    public partial class WszystkieKaryView : WszystkieViewBase
     {
         public WszystkieKaryView()
         {

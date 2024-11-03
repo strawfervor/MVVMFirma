@@ -18,7 +18,7 @@ namespace MVVMFirma.Views
     /// <summary>
     /// Logika interakcji dla klasy WszystkieWypozyczeniaView.xaml
     /// </summary>
-    public partial class WszystkieWypozyczeniaView : UserControl
+    public partial class WszystkieWypozyczeniaView : WszystkieViewBase
     {
         public WszystkieWypozyczeniaView()
         {
