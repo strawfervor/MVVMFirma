@@ -39,8 +39,17 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -63,6 +72,66 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Helper\BaseCommand.cs" />
+    <Compile Include="Models\Entities\Adres.cs">
+      <DependentUpon>ModelBiblioteka.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\Autorzy.cs">
+      <DependentUpon>ModelBiblioteka.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\Czytelnicy.cs">
+      <DependentUpon>ModelBiblioteka.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\Egzemplarze.cs">
+      <DependentUpon>ModelBiblioteka.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\Kary.cs">
+      <DependentUpon>ModelBiblioteka.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\Ksiazki.cs">
+      <DependentUpon>ModelBiblioteka.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\ModelBiblioteka.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelBiblioteka.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\ModelBiblioteka.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelBiblioteka.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\ModelBiblioteka.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelBiblioteka.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\Rezerwacje.cs">
+      <DependentUpon>ModelBiblioteka.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\RodzajCzlonkostwa.cs">
+      <DependentUpon>ModelBiblioteka.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\RodzajLiteracki.cs">
+      <DependentUpon>ModelBiblioteka.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\sysdiagrams.cs">
+      <DependentUpon>ModelBiblioteka.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\Tagi.cs">
+      <DependentUpon>ModelBiblioteka.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\UzytkownicySystemu.cs">
+      <DependentUpon>ModelBiblioteka.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\Wydawnictwa.cs">
+      <DependentUpon>ModelBiblioteka.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\Wypozyczenia.cs">
+      <DependentUpon>ModelBiblioteka.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\Zgloszenia.cs">
+      <DependentUpon>ModelBiblioteka.tt</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\CommandViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
@@ -218,6 +287,14 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
+    <EntityDeploy Include="Models\Entities\ModelBiblioteka.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelBiblioteka.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Models\Entities\ModelBiblioteka.edmx.diagram">
+      <DependentUpon>ModelBiblioteka.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -362,8 +439,21 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Models\" />
+    <Content Include="Models\Entities\ModelBiblioteka.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ModelBiblioteka.Context.cs</LastGenOutput>
+      <DependentUpon>ModelBiblioteka.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\Entities\ModelBiblioteka.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelBiblioteka.edmx</DependentUpon>
+      <LastGenOutput>ModelBiblioteka.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
