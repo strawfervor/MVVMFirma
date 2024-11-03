@@ -90,6 +90,9 @@
     <Compile Include="Models\Entities\Ksiazki.cs">
       <DependentUpon>ModelBiblioteka.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Entities\KsiazkiTag.cs">
+      <DependentUpon>ModelBiblioteka.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Entities\ModelBiblioteka.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -163,7 +166,6 @@
     <Compile Include="ViewModels\WszystkieRodzajeCzlonkostwaViewModel.cs" />
     <Compile Include="ViewModels\WszystkieRodzajeLiterackieViewModel.cs" />
     <Compile Include="ViewModels\WszystkieTagiViewModel.cs" />
-    <Compile Include="ViewModels\WszystkieTowaryViewModel.cs" />
     <Compile Include="ViewModels\WszystkieViewModel.cs" />
     <Compile Include="ViewModels\WszystkieWydawnictwaViewModel.cs" />
     <Compile Include="ViewModels\WszystkieWypozyczeniaViewModel.cs" />

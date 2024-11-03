@@ -40,5 +40,6 @@ namespace MVVMFirma.Models.Entities
         public virtual DbSet<Wydawnictwa> Wydawnictwa { get; set; }
         public virtual DbSet<Wypozyczenia> Wypozyczenia { get; set; }
         public virtual DbSet<Zgloszenia> Zgloszenia { get; set; }
+        public virtual DbSet<KsiazkiTag> KsiazkiTag { get; set; }
     }
 }

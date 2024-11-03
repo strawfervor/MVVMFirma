@@ -20,7 +20,7 @@ namespace MVVMFirma.Models.Entities
             this.Egzemplarze = new HashSet<Egzemplarze>();
             this.Rezerwacje = new HashSet<Rezerwacje>();
             this.Wypozyczenia = new HashSet<Wypozyczenia>();
-            this.Tagi = new HashSet<Tagi>();
+            this.KsiazkiTag = new HashSet<KsiazkiTag>();
         }
     
         public int Id { get; set; }
@@ -43,6 +43,6 @@ namespace MVVMFirma.Models.Entities
         public virtual ICollection<Wypozyczenia> Wypozyczenia { get; set; }
         public virtual RodzajLiteracki RodzajLiteracki1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tagi> Tagi { get; set; }
+        public virtual ICollection<KsiazkiTag> KsiazkiTag { get; set; }
     }
 }

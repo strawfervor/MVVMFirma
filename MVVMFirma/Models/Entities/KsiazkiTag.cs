@@ -12,18 +12,13 @@ namespace MVVMFirma.Models.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class Tagi
+    public partial class KsiazkiTag
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Tagi()
-        {
-            this.KsiazkiTag = new HashSet<KsiazkiTag>();
-        }
-    
         public int Id { get; set; }
-        public string TrescTagu { get; set; }
+        public Nullable<int> IdKsiazki { get; set; }
+        public Nullable<int> IdTagu { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<KsiazkiTag> KsiazkiTag { get; set; }
+        public virtual Ksiazki Ksiazki { get; set; }
+        public virtual Tagi Tagi { get; set; }
     }
 }

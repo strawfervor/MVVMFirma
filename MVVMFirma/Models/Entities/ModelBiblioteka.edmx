@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BibliotekaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="BibliotekaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Adres">
           <Key>
             <PropertyRef Name="Id" />
@@ -57,14 +57,6 @@
           <Property Name="Opis" Type="nvarchar" MaxLength="255" />
           <Property Name="DataNaliczenia" Type="datetime" />
         </EntityType>
-        <EntityType Name="KsiazkaTag">
-          <Key>
-            <PropertyRef Name="IdKsiazki" />
-            <PropertyRef Name="IdTagu" />
-          </Key>
-          <Property Name="IdKsiazki" Type="int" Nullable="false" />
-          <Property Name="IdTagu" Type="int" Nullable="false" />
-        </EntityType>
         <EntityType Name="Ksiazki">
           <Key>
             <PropertyRef Name="Id" />
@@ -78,6 +70,14 @@
           <Property Name="Gatunek" Type="nvarchar" MaxLength="100" />
           <Property Name="IloscEgzemplarzy" Type="int" />
           <Property Name="RodzajLiteracki" Type="int" />
+        </EntityType>
+        <EntityType Name="KsiazkiTag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdKsiazki" Type="int" />
+          <Property Name="IdTagu" Type="int" />
         </EntityType>
         <EntityType Name="Rezerwacje">
           <Key>
@@ -194,30 +194,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__KsiazkaTa__IdKsi__52593CB8">
-          <End Role="Ksiazki" Type="Self.Ksiazki" Multiplicity="1" />
-          <End Role="KsiazkaTag" Type="Self.KsiazkaTag" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Ksiazki">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="KsiazkaTag">
-              <PropertyRef Name="IdKsiazki" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__KsiazkaTa__IdTag__534D60F1">
-          <End Role="Tagi" Type="Self.Tagi" Multiplicity="1" />
-          <End Role="KsiazkaTag" Type="Self.KsiazkaTag" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tagi">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="KsiazkaTag">
-              <PropertyRef Name="IdTagu" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Ksiazki__IdAutor__3D5E1FD2">
           <End Role="Autorzy" Type="Self.Autorzy" Multiplicity="0..1" />
           <End Role="Ksiazki" Type="Self.Ksiazki" Multiplicity="*" />
@@ -326,14 +302,38 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_KsiazkiTag_Ksiazki">
+          <End Role="Ksiazki" Type="Self.Ksiazki" Multiplicity="0..1" />
+          <End Role="KsiazkiTag" Type="Self.KsiazkiTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ksiazki">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="KsiazkiTag">
+              <PropertyRef Name="IdKsiazki" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KsiazkiTag_Tagi">
+          <End Role="Tagi" Type="Self.Tagi" Multiplicity="0..1" />
+          <End Role="KsiazkiTag" Type="Self.KsiazkiTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tagi">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="KsiazkiTag">
+              <PropertyRef Name="IdTagu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="BibliotekaModelStoreContainer">
           <EntitySet Name="Adres" EntityType="Self.Adres" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Autorzy" EntityType="Self.Autorzy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Czytelnicy" EntityType="Self.Czytelnicy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Egzemplarze" EntityType="Self.Egzemplarze" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Kary" EntityType="Self.Kary" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="KsiazkaTag" EntityType="Self.KsiazkaTag" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ksiazki" EntityType="Self.Ksiazki" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KsiazkiTag" EntityType="Self.KsiazkiTag" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rezerwacje" EntityType="Self.Rezerwacje" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RodzajCzlonkostwa" EntityType="Self.RodzajCzlonkostwa" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RodzajLiteracki" EntityType="Self.RodzajLiteracki" Schema="dbo" store:Type="Tables" />
@@ -354,14 +354,6 @@
           <AssociationSet Name="FK__Kary__IdCzytelni__59FA5E80" Association="Self.FK__Kary__IdCzytelni__59FA5E80">
             <End Role="Czytelnicy" EntitySet="Czytelnicy" />
             <End Role="Kary" EntitySet="Kary" />
-          </AssociationSet>
-          <AssociationSet Name="FK__KsiazkaTa__IdKsi__52593CB8" Association="Self.FK__KsiazkaTa__IdKsi__52593CB8">
-            <End Role="Ksiazki" EntitySet="Ksiazki" />
-            <End Role="KsiazkaTag" EntitySet="KsiazkaTag" />
-          </AssociationSet>
-          <AssociationSet Name="FK__KsiazkaTa__IdTag__534D60F1" Association="Self.FK__KsiazkaTa__IdTag__534D60F1">
-            <End Role="Tagi" EntitySet="Tagi" />
-            <End Role="KsiazkaTag" EntitySet="KsiazkaTag" />
           </AssociationSet>
           <AssociationSet Name="FK__Ksiazki__IdAutor__3D5E1FD2" Association="Self.FK__Ksiazki__IdAutor__3D5E1FD2">
             <End Role="Autorzy" EntitySet="Autorzy" />
@@ -399,9 +391,16 @@
             <End Role="RodzajLiteracki" EntitySet="RodzajLiteracki" />
             <End Role="Ksiazki" EntitySet="Ksiazki" />
           </AssociationSet>
+          <AssociationSet Name="FK_KsiazkiTag_Ksiazki" Association="Self.FK_KsiazkiTag_Ksiazki">
+            <End Role="Ksiazki" EntitySet="Ksiazki" />
+            <End Role="KsiazkiTag" EntitySet="KsiazkiTag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KsiazkiTag_Tagi" Association="Self.FK_KsiazkiTag_Tagi">
+            <End Role="Tagi" EntitySet="Tagi" />
+            <End Role="KsiazkiTag" EntitySet="KsiazkiTag" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BibliotekaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -486,7 +485,7 @@
           <NavigationProperty Name="Rezerwacje" Relationship="Self.FK__Rezerwacj__IdKsi__49C3F6B7" FromRole="Ksiazki" ToRole="Rezerwacje" />
           <NavigationProperty Name="Wypozyczenia" Relationship="Self.FK__Wypozycze__IdKsi__45F365D3" FromRole="Ksiazki" ToRole="Wypozyczenia" />
           <NavigationProperty Name="RodzajLiteracki1" Relationship="Self.FK_Ksiazki_RodzajLiteracki" FromRole="Ksiazki" ToRole="RodzajLiteracki" />
-          <NavigationProperty Name="Tagi" Relationship="Self.KsiazkaTag" FromRole="Ksiazki" ToRole="Tagi" />
+          <NavigationProperty Name="KsiazkiTag" Relationship="BibliotekaModel.FK_KsiazkiTag_Ksiazki" FromRole="Ksiazki" ToRole="KsiazkiTag" />
         </EntityType>
         <EntityType Name="Rezerwacje">
           <Key>
@@ -534,7 +533,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TrescTagu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Ksiazki" Relationship="Self.KsiazkaTag" FromRole="Tagi" ToRole="Ksiazki" />
+          <NavigationProperty Name="KsiazkiTag" Relationship="BibliotekaModel.FK_KsiazkiTag_Tagi" FromRole="Tagi" ToRole="KsiazkiTag" />
         </EntityType>
         <EntityType Name="UzytkownicySystemu">
           <Key>
@@ -720,10 +719,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="KsiazkaTag">
-          <End Role="Ksiazki" Type="Self.Ksiazki" Multiplicity="*" />
-          <End Role="Tagi" Type="Self.Tagi" Multiplicity="*" />
-        </Association>
         <EntityContainer Name="BibliotekaEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Adres" EntityType="Self.Adres" />
           <EntitySet Name="Autorzy" EntityType="Self.Autorzy" />
@@ -788,11 +783,50 @@
             <End Role="RodzajLiteracki" EntitySet="RodzajLiteracki" />
             <End Role="Ksiazki" EntitySet="Ksiazki" />
           </AssociationSet>
-          <AssociationSet Name="KsiazkaTag" Association="Self.KsiazkaTag">
+          <EntitySet Name="KsiazkiTag" EntityType="BibliotekaModel.KsiazkiTag" />
+          <AssociationSet Name="FK_KsiazkiTag_Ksiazki" Association="BibliotekaModel.FK_KsiazkiTag_Ksiazki">
             <End Role="Ksiazki" EntitySet="Ksiazki" />
+            <End Role="KsiazkiTag" EntitySet="KsiazkiTag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KsiazkiTag_Tagi" Association="BibliotekaModel.FK_KsiazkiTag_Tagi">
             <End Role="Tagi" EntitySet="Tagi" />
+            <End Role="KsiazkiTag" EntitySet="KsiazkiTag" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="KsiazkiTag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdKsiazki" Type="Int32" />
+          <Property Name="IdTagu" Type="Int32" />
+          <NavigationProperty Name="Ksiazki" Relationship="BibliotekaModel.FK_KsiazkiTag_Ksiazki" FromRole="KsiazkiTag" ToRole="Ksiazki" />
+          <NavigationProperty Name="Tagi" Relationship="BibliotekaModel.FK_KsiazkiTag_Tagi" FromRole="KsiazkiTag" ToRole="Tagi" />
+        </EntityType>
+        <Association Name="FK_KsiazkiTag_Ksiazki">
+          <End Type="BibliotekaModel.Ksiazki" Role="Ksiazki" Multiplicity="0..1" />
+          <End Type="BibliotekaModel.KsiazkiTag" Role="KsiazkiTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ksiazki">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="KsiazkiTag">
+              <PropertyRef Name="IdKsiazki" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KsiazkiTag_Tagi">
+          <End Type="BibliotekaModel.Tagi" Role="Tagi" Multiplicity="0..1" />
+          <End Type="BibliotekaModel.KsiazkiTag" Role="KsiazkiTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tagi">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="KsiazkiTag">
+              <PropertyRef Name="IdTagu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -959,14 +993,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="KsiazkaTag" TypeName="BibliotekaModel.KsiazkaTag" StoreEntitySet="KsiazkaTag">
-            <EndProperty Name="Ksiazki">
-              <ScalarProperty Name="Id" ColumnName="IdKsiazki" />
-            </EndProperty>
-            <EndProperty Name="Tagi">
-              <ScalarProperty Name="Id" ColumnName="IdTagu" />
-            </EndProperty>
-          </AssociationSetMapping>
+          <EntitySetMapping Name="KsiazkiTag">
+            <EntityTypeMapping TypeName="BibliotekaModel.KsiazkiTag">
+              <MappingFragment StoreEntitySet="KsiazkiTag">
+                <ScalarProperty Name="IdTagu" ColumnName="IdTagu" />
+                <ScalarProperty Name="IdKsiazki" ColumnName="IdKsiazki" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
