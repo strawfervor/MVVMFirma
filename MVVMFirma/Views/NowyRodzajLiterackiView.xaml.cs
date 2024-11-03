@@ -18,7 +18,7 @@ namespace MVVMFirma.Views
     /// <summary>
     /// Logika interakcji dla klasy NowyRodzajLiterackiView.xaml
     /// </summary>
-    public partial class NowyRodzajLiterackiView : UserControl
+    public partial class NowyRodzajLiterackiView : JedenViewBase
     {
         public NowyRodzajLiterackiView()
         {

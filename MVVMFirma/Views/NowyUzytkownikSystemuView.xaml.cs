@@ -18,7 +18,7 @@ namespace MVVMFirma.Views
     /// <summary>
     /// Logika interakcji dla klasy NowyUzytkownikSystemuView.xaml
     /// </summary>
-    public partial class NowyUzytkownikSystemuView : UserControl
+    public partial class NowyUzytkownikSystemuView : JedenViewBase
     {
         public NowyUzytkownikSystemuView()
         {

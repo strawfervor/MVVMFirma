@@ -18,7 +18,7 @@ namespace MVVMFirma.Views
     /// <summary>
     /// Logika interakcji dla klasy NowyAdresView.xaml
     /// </summary>
-    public partial class NowyAdresView : UserControl
+    public partial class NowyAdresView : JedenViewBase
     {
         public NowyAdresView()
         {

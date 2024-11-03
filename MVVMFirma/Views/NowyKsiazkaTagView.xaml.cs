@@ -18,7 +18,7 @@ namespace MVVMFirma.Views
     /// <summary>
     /// Logika interakcji dla klasy NowyKsiazkaTagView.xaml
     /// </summary>
-    public partial class NowyKsiazkaTagView : UserControl
+    public partial class NowyKsiazkaTagView : JedenViewBase
     {
         public NowyKsiazkaTagView()
         {

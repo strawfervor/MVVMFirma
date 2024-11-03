@@ -18,7 +18,7 @@ namespace MVVMFirma.Views
     /// <summary>
     /// Logika interakcji dla klasy NowaRezerwacjaView.xaml
     /// </summary>
-    public partial class NowaRezerwacjaView : UserControl
+    public partial class NowaRezerwacjaView : JedenViewBase
     {
         public NowaRezerwacjaView()
         {

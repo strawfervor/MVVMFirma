@@ -18,7 +18,7 @@ namespace MVVMFirma.Views
     /// <summary>
     /// Logika interakcji dla klasy NowyAutorView.xaml
     /// </summary>
-    public partial class NowyAutorView : UserControl
+    public partial class NowyAutorView : JedenViewBase
     {
         public NowyAutorView()
         {

@@ -171,6 +171,7 @@
     <Compile Include="ViewModels\WszystkieWypozyczeniaViewModel.cs" />
     <Compile Include="ViewModels\WszystkieZgloszeniaViewModel.cs" />
     <Compile Include="ViewModels\WszyswcyCzytelnicyViewModel.cs" />
+    <Compile Include="Views\JedenViewBase.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -215,9 +216,6 @@
     </Compile>
     <Compile Include="Views\NowyTagView.xaml.cs">
       <DependentUpon>NowyTagView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\NowyTowarView.xaml.cs">
-      <DependentUpon>NowyTowarView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\NowyUzytkownikSystemuView.xaml.cs">
       <DependentUpon>NowyUzytkownikSystemuView.xaml</DependentUpon>
@@ -368,10 +366,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\NowyTagView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\NowyTowarView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

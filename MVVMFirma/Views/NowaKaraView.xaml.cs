@@ -18,7 +18,7 @@ namespace MVVMFirma.Views
     /// <summary>
     /// Logika interakcji dla klasy NowaKaraView.xaml
     /// </summary>
-    public partial class NowaKaraView : UserControl
+    public partial class NowaKaraView : JedenViewBase
     {
         public NowaKaraView()
         {

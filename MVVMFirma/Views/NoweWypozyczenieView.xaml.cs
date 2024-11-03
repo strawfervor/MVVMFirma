@@ -18,7 +18,7 @@ namespace MVVMFirma.Views
     /// <summary>
     /// Logika interakcji dla klasy NoweWypozyczenieView.xaml
     /// </summary>
-    public partial class NoweWypozyczenieView : UserControl
+    public partial class NoweWypozyczenieView : JedenViewBase
     {
         public NoweWypozyczenieView()
         {
