@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace MVVMFirma.ViewModels
 {
-    internal class NowyAdresViewModel
+    public class NowyAdresViewModel: WorkspaceViewModel
     {
+        public NowyAdresViewModel() 
+        {
+            base.DisplayName = "Adres";
+        }
     }
 }

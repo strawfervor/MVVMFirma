@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace MVVMFirma.ViewModels
 {
-    internal class NowyRodzajCzlonkostwaViewModel
+    public class NowyRodzajCzlonkostwaViewModel: WorkspaceViewModel
     {
+        public NowyRodzajCzlonkostwaViewModel() 
+        {
+            base.DisplayName = "Rodzaj Członkostwa";
+        }
     }
 }

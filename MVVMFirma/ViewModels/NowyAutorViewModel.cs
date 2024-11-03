@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace MVVMFirma.ViewModels
 {
-    internal class NowyAutorViewModel
+    public class NowyAutorViewModel: WorkspaceViewModel
     {
+        public NowyAutorViewModel()
+        {
+            base.DisplayName = "Autor";
+        }
     }
 }

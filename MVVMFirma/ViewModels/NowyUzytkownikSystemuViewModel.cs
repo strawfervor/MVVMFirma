@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace MVVMFirma.ViewModels
 {
-    internal class NowyUzytkownikSystemuViewModel
+    public class NowyUzytkownikSystemuViewModel : WorkspaceViewModel
     {
+        public NowyUzytkownikSystemuViewModel() 
+        {
+            base.DisplayName = "Użytkownik Systemu";
+        }
     }
 }

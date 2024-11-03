@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace MVVMFirma.ViewModels
 {
-    internal class NowyRodzajLiterackiViewModel
+    public class NowyRodzajLiterackiViewModel: WorkspaceViewModel
     {
+        public NowyRodzajLiterackiViewModel() 
+        {
+            base.DisplayName = "Rodzaj Literacki";
+        }
     }
 }
