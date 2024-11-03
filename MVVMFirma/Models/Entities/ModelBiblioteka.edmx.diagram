@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9a25334e11eb48fab2e5b2f1af33c74e" Name="Diagram1">
+        <EntityTypeShape EntityType="BibliotekaModel.Adres" Width="1.5" PointX="3.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BibliotekaModel.Autorzy" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BibliotekaModel.Czytelnicy" Width="1.5" PointX="6" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BibliotekaModel.Egzemplarze" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BibliotekaModel.Kary" Width="1.5" PointX="8.25" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BibliotekaModel.Ksiazki" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BibliotekaModel.Rezerwacje" Width="1.5" PointX="8.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BibliotekaModel.RodzajCzlonkostwa" Width="1.5" PointX="3.75" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="BibliotekaModel.RodzajLiteracki" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BibliotekaModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BibliotekaModel.Tagi" Width="1.5" PointX="5.5" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BibliotekaModel.UzytkownicySystemu" Width="1.5" PointX="6" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BibliotekaModel.Wydawnictwa" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BibliotekaModel.Wypozyczenia" Width="1.5" PointX="8.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BibliotekaModel.Zgloszenia" Width="1.5" PointX="8.25" PointY="15.875" IsExpanded="true" />
+        <AssociationConnector Association="BibliotekaModel.FK__Czytelnic__IdAdr__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="BibliotekaModel.FK__Ksiazki__IdAutor__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="BibliotekaModel.FK__Kary__IdCzytelni__59FA5E80" ManuallyRouted="false" />
+        <AssociationConnector Association="BibliotekaModel.FK__Rezerwacj__IdCzy__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="BibliotekaModel.FK__Wypozycze__IdCzy__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="BibliotekaModel.FK__Zgloszeni__IdCzy__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="BibliotekaModel.FK_Czytelnicy_RodzajCzlonkostwa" ManuallyRouted="false" />
+        <AssociationConnector Association="BibliotekaModel.FK__Egzemplar__IdKsi__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="BibliotekaModel.FK__Ksiazki__IdWydaw__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="BibliotekaModel.FK__Rezerwacj__IdKsi__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="BibliotekaModel.FK__Wypozycze__IdKsi__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="BibliotekaModel.FK_Ksiazki_RodzajLiteracki" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BibliotekaModel.KsiazkiTag" Width="1.5" PointX="9" PointY="9.5" />
+        <AssociationConnector Association="BibliotekaModel.FK_KsiazkiTag_Ksiazki" />
+        <AssociationConnector Association="BibliotekaModel.FK_KsiazkiTag_Tagi" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
