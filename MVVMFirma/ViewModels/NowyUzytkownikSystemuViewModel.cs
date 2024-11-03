@@ -33,7 +33,7 @@ namespace MVVMFirma.ViewModels
         #region Konstruktor
         public NowyUzytkownikSystemuViewModel()
         {
-            base.DisplayName = "Towar";
+            base.DisplayName = "Użytkownik Systemu";
             bibliotekaEntites = new BibliotekaEntities();
             uzytkownicySystemu = new UzytkownicySystemu();
         }
