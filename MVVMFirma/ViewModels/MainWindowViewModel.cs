@@ -40,8 +40,64 @@ namespace MVVMFirma.ViewModels
                     new BaseCommand(() => this.ShowAllTowar())),
 
                 new CommandViewModel(
-                    "Towar",
-                    new BaseCommand(() => this.CreateTowar()))
+                    "Kara",
+                    new BaseCommand(() => this.CreateView(new NowaKaraViewModel()))),
+
+                new CommandViewModel(
+                    "Książka",
+                    new BaseCommand(() => this.CreateView(new NowaKsiazkaViewModel()))),
+
+                new CommandViewModel(
+                    "Rezerwacja",
+                    new BaseCommand(() => this.CreateView(new NowaRezerwacjaViewModel()))),
+
+                new CommandViewModel(
+                    "Wydawnictwo",
+                    new BaseCommand(() => this.CreateView(new NoweWydawnictwoViewModel()))),
+
+                new CommandViewModel(
+                    "Wypożyczenie",
+                    new BaseCommand(() => this.CreateView(new NoweWypozyczenieViewModel()))),
+
+                new CommandViewModel(
+                    "Zgłoszenie",
+                    new BaseCommand(() => this.CreateView(new NoweZgloszenieViewModel()))),
+
+                new CommandViewModel(
+                    "Adres",
+                    new BaseCommand(() => this.CreateView(new NowyAdresViewModel()))),
+
+                new CommandViewModel(
+                    "Autor",
+                    new BaseCommand(() => this.CreateView(new NowyAutorViewModel()))),
+
+                new CommandViewModel(
+                    "Czytelnik",
+                    new BaseCommand(() => this.CreateView(new NowyCzytelnikViewModel()))),
+
+                new CommandViewModel(
+                    "Egzemplarz",
+                    new BaseCommand(() => this.CreateView(new NowyEgzemplarzViewModel()))),
+
+                new CommandViewModel(
+                    "Książka-Tag (dodaj)",
+                    new BaseCommand(() => this.CreateView(new NowyKsiazkaTagViewModel()))),
+
+                new CommandViewModel(
+                    "Rodzaj Członkostwa",
+                    new BaseCommand(() => this.CreateView(new NowyRodzajCzlonkostwaViewModel()))),
+
+                new CommandViewModel(
+                    "RodzajLitercki",
+                    new BaseCommand(() => this.CreateView(new NowyRodzajLiterackiViewModel()))),
+
+                new CommandViewModel(
+                    "Tag",
+                    new BaseCommand(() => this.CreateView(new NowyTagViewModel()))),
+
+                new CommandViewModel(
+                    "Użytkownik Systemu",
+                    new BaseCommand(() => this.CreateView(new NowyUzytkownikSystemuViewModel()))),
             };
         }
         #endregion
@@ -79,12 +135,18 @@ namespace MVVMFirma.ViewModels
         #endregion // Workspaces
 
         #region Private Helpers
-        private void CreateTowar()
+
+        private void CreateView(WorkspaceViewModel nowy) //tworzy nowa zakładkę i ją aktywuje
         {
-            NowyTowarViewModel workspace = new NowyTowarViewModel();
-            this.Workspaces.Add(workspace);
-            this.SetActiveWorkspace(workspace);
+            this.Workspaces.Add(nowy);//to jest dodanie zakładki do kolekcji zakłądek
+            this.SetActiveWorkspace(nowy);//aktywowanie zakładki
         }
+        //private void CreateTowar()
+        //{
+        //    NowyTowarViewModel workspace = new NowyTowarViewModel();
+        //    this.Workspaces.Add(workspace);
+        //    this.SetActiveWorkspace(workspace);
+        //}
         private void ShowAllTowar()
         {
             WszystkieTowaryViewModel workspace =

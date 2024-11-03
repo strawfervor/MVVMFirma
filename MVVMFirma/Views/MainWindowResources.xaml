@@ -10,6 +10,70 @@
         <vw:NowyTowarView/>
     </DataTemplate>
 
+    
+    
+    <DataTemplate DataType="{x:Type vm:NowaKaraViewModel}">
+        <vw:NowaKaraView/>
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type vm:NowaKsiazkaViewModel}">
+        <vw:NowaKsiazkaView/>
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type vm:NowaRezerwacjaViewModel}">
+        <vw:NowaRezerwacjaView/>
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type vm:NoweWydawnictwoViewModel}">
+        <vw:NoweWydawnictwoView/>
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type vm:NoweWypozyczenieViewModel}">
+        <vw:NoweWypozyczenieView/>
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type vm:NoweZgloszenieViewModel}">
+        <vw:NoweZgloszenieView/>
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type vm:NowyAdresViewModel}">
+        <vw:NowyAdresView/>
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type vm:NowyAutorViewModel}">
+        <vw:NowyAutorView/>
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type vm:NowyCzytelnikViewModel}">
+        <vw:NowyCzytelnikView/>
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type vm:NowyEgzemplarzViewModel}">
+        <vw:NowyEgzemplarzView/>
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type vm:NowyKsiazkaTagViewModel}">
+        <vw:NowyKsiazkaTagView/>
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type vm:NowyRodzajCzlonkostwaViewModel}">
+        <vw:NowyRodzajCzlonkostwaView/>
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type vm:NowyRodzajLiterackiViewModel}">
+        <vw:NowyRodzajLiterackiView/>
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type vm:NowyTagViewModel}">
+        <vw:NowyTagView/>
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type vm:NowyUzytkownikSystemuViewModel}">
+        <vw:NowyUzytkownikSystemuView/>
+    </DataTemplate>
+    
+
+
     <Style x:Key="MainHCCStyle" TargetType="{x:Type HeaderedContentControl}">
         <Setter Property="HeaderTemplate">
             <Setter.Value>
