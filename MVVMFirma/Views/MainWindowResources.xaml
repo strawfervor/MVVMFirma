@@ -3,15 +3,54 @@
                     xmlns:vm="clr-namespace:MVVMFirma.ViewModels"
                     xmlns:vw="clr-namespace:MVVMFirma.Views"
                     >
-    <DataTemplate DataType="{x:Type vm:WszystkieTowaryViewModel}">
-        <vw:WszystkieTowaryView/>
+    <DataTemplate DataType="{x:Type vm:WszyscyAutorzyViewModel}">
+        <vw:WszyscyAutorzyView/>
     </DataTemplate>
-    <DataTemplate DataType="{x:Type vm:NowyTowarViewModel}">
-        <vw:NowyTowarView/>
+    <DataTemplate DataType="{x:Type vm:WszyscyUzytkownicySystemuViewModel}">
+        <vw:WszyscyUzytkownicySystemuView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:WszystkieAdresyViewModel}">
+        <vw:WszystkieAdresyView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:WszystkieEgzemplarzeViewModel}">
+        <vw:WszystkieEgzemplarzeView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:WszystkieKaryViewModel}">
+        <vw:WszystkieKaryView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:WszystkieKsiazkaTagViewModel}">
+        <vw:WszystkieKsiazkaTagView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:WszystkieKsiazkiViewModel}">
+        <vw:WszystkieKsiazkiView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:WszystkieRezerwacjeViewModel}">
+        <vw:WszystkieRezerwacjeView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:WszystkieRodzajeCzlonkostwaViewModel}">
+        <vw:WszystkieRodzajeCzlonkostwaView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:WszystkieRodzajeLiterackieViewModel}">
+        <vw:WszystkieRodzajeLiterackieView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:WszystkieTagiViewModel}">
+        <vw:WszystkieTagiView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:WszystkieWydawnictwaViewModel}">
+        <vw:WszystkieWydawnictwaView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:WszystkieWypozyczeniaViewModel}">
+        <vw:WszystkieWypozyczeniaView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:WszystkieZgloszeniaViewModel}">
+        <vw:WszystkieZgloszeniaView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:WszyswcyCzytelnicyViewModel}">
+        <vw:WszyscyCzytelnicyView/>
     </DataTemplate>
 
-    
-    
+
+
     <DataTemplate DataType="{x:Type vm:NowaKaraViewModel}">
         <vw:NowaKaraView/>
     </DataTemplate>

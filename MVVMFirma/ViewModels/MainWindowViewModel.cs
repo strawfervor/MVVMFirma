@@ -35,9 +35,55 @@ namespace MVVMFirma.ViewModels
         {
             return new List<CommandViewModel>
             {
+                //Wszystkie*ViewModel
                 new CommandViewModel(
-                    "Towary",
-                    new BaseCommand(() => this.ShowAllTowar())),
+                    "Autorzy",
+                    new BaseCommand(() => this.ShowAll(new WszyscyAutorzyViewModel()))),
+                new CommandViewModel(
+                    "Użytkownicy Systemu",
+                    new BaseCommand(() => this.ShowAll(new WszyscyUzytkownicySystemuViewModel()))),
+                new CommandViewModel(
+                    "Adresy",
+                    new BaseCommand(() => this.ShowAll(new WszystkieAdresyViewModel()))),
+                new CommandViewModel(
+                    "Egzemplarze",
+                    new BaseCommand(() => this.ShowAll(new WszystkieEgzemplarzeViewModel()))),
+                new CommandViewModel(
+                    "Kary",
+                    new BaseCommand(() => this.ShowAll(new WszystkieKaryViewModel()))),
+                new CommandViewModel(
+                    "Książka-Tag (wszystkie)",
+                    new BaseCommand(() => this.ShowAll(new WszystkieKsiazkaTagViewModel()))),
+                new CommandViewModel(
+                    "Książki",
+                    new BaseCommand(() => this.ShowAll(new WszystkieKsiazkiViewModel()))),
+                new CommandViewModel(
+                    "Rezerwacje",
+                    new BaseCommand(() => this.ShowAll(new WszystkieRezerwacjeViewModel()))),
+                new CommandViewModel(
+                    "Rodzaje Członkostwa",
+                    new BaseCommand(() => this.ShowAll(new WszystkieRodzajeCzlonkostwaViewModel()))),
+                new CommandViewModel(
+                    "Rodzaje Literackie",
+                    new BaseCommand(() => this.ShowAll(new WszystkieRodzajeLiterackieViewModel()))),
+                new CommandViewModel(
+                    "Tagi",
+                    new BaseCommand(() => this.ShowAll(new WszystkieTagiViewModel()))),
+                new CommandViewModel(
+                    "Wydawnictwa",
+                    new BaseCommand(() => this.ShowAll(new WszystkieWydawnictwaViewModel()))),
+                new CommandViewModel(
+                    "Wypożyczenia",
+                    new BaseCommand(() => this.ShowAll(new WszystkieWypozyczeniaViewModel()))),
+                new CommandViewModel(
+                    "Zgłoszenia",
+                    new BaseCommand(() => this.ShowAll(new WszystkieZgloszeniaViewModel()))),
+                new CommandViewModel(
+                    "Czytelnicy",
+                    new BaseCommand(() => this.ShowAll(new WszyswcyCzytelnicyViewModel()))),
+
+
+                //poniżej idą Nowe*ViewModel
 
                 new CommandViewModel(
                     "Kara",
@@ -147,15 +193,30 @@ namespace MVVMFirma.ViewModels
         //    this.Workspaces.Add(workspace);
         //    this.SetActiveWorkspace(workspace);
         //}
-        private void ShowAllTowar()
+        //private void ShowAllTowar()
+        //{
+        //    WszystkieTowaryViewModel workspace =
+        //        this.Workspaces.FirstOrDefault(vm => vm is WszystkieTowaryViewModel)
+        //        as WszystkieTowaryViewModel;
+        //    if (workspace == null)
+        //    {
+        //        workspace = new WszystkieTowaryViewModel();
+        //        this.Workspaces.Add(workspace);
+        //    }
+
+        //    this.SetActiveWorkspace(workspace);
+        //}
+
+        private void ShowAll(WorkspaceViewModel workspace)//tworzenie nowych zakladek WszystkieCostam...
         {
-            WszystkieTowaryViewModel workspace =
-                this.Workspaces.FirstOrDefault(vm => vm is WszystkieTowaryViewModel)
-                as WszystkieTowaryViewModel;
-            if (workspace == null)
+            var existingWorkspace = this.Workspaces.FirstOrDefault(vm => vm.GetType() == workspace.GetType());//sprawdzanie czy zakładka takie typu już istnieje
+            if (existingWorkspace == null)
             {
-                workspace = new WszystkieTowaryViewModel();
                 this.Workspaces.Add(workspace);
+            }
+            else
+            {
+                workspace = existingWorkspace;
             }
 
             this.SetActiveWorkspace(workspace);
