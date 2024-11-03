@@ -6,7 +6,15 @@
              xmlns:local="clr-namespace:MVVMFirma.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
+    <Grid Background="AntiqueWhite">
+        <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding List}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="ID Książki" Binding="{Binding IdKsiazki}"/>
+                <DataGridTextColumn Header="ID Czytelnika" Binding="{Binding IdCzytelnika}"/>
+                <DataGridTextColumn Header="Data dokonania rezerwacji" Binding="{Binding DataRezerwacji}"/>
+                <DataGridTextColumn Header="Data odbioru książki" Binding="{Binding DataOdbioruKsiazki}"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </local:WszystkieViewBase>

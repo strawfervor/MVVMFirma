@@ -6,7 +6,19 @@
              xmlns:local="clr-namespace:MVVMFirma.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
+    <Grid Background="AntiqueWhite">
+        <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding List}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Tytuł" Binding="{Binding Tytul}"/>
+                <DataGridTextColumn Header="ID Autora" Binding="{Binding IdAutora}"/>
+                <DataGridTextColumn Header="ISBN" Binding="{Binding ISBN}"/>
+                <DataGridTextColumn Header="Rok wydania" Binding="{Binding RokWydania}"/>
+                <DataGridTextColumn Header="ID Wydawnictwa" Binding="{Binding IdWydawnictwa}"/>
+                <DataGridTextColumn Header="Gatunek" Binding="{Binding Gatunek}"/>
+                <DataGridTextColumn Header="Ilość egzemplarzy" Binding="{Binding IloscEgzemplarzy}"/>
+                <DataGridTextColumn Header="Rodzaj Literacki" Binding="{Binding RodzajLiteracki}"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </local:WszystkieViewBase>
