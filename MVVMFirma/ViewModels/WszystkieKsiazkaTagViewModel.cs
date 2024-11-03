@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace MVVMFirma.ViewModels
 {
-    internal class WszystkieKsiazkaTagViewModel
+    public class WszystkieKsiazkaTagViewModel : WorkspaceViewModel
     {
+        public WszystkieKsiazkaTagViewModel()
+        {
+            base.DisplayName = "Książka-Tag (wszystkie)";
+        }
     }
 }

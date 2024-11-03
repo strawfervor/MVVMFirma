@@ -10,7 +10,7 @@ namespace MVVMFirma.ViewModels
     {
         public NowyKsiazkaTagViewModel() 
         {
-            base.DisplayName = "Książka-Tag";
+            base.DisplayName = "Książka-Tag (dodaj)";
         }
     }
 }

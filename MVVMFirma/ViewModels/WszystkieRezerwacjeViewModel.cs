@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace MVVMFirma.ViewModels
 {
-    internal class WszystkieRezerwacjeViewModel
+    public class WszystkieRezerwacjeViewModel : WorkspaceViewModel
     {
+        public WszystkieRezerwacjeViewModel()
+        {
+            base.DisplayName = "Rezerwacje";
+        }
     }
 }

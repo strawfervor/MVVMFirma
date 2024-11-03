@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace MVVMFirma.ViewModels
 {
-    internal class WszystkieTagiViewModel
+    public class WszystkieTagiViewModel : WorkspaceViewModel
     {
+        public WszystkieTagiViewModel()
+        {
+            base.DisplayName = "Tagi";
+        }
     }
 }
