@@ -9,33 +9,14 @@ using System.Windows.Input;
 
 namespace MVVMFirma.ViewModels
 {
-    public class NowyUzytkownikSystemuViewModel : WorkspaceViewModel
+    public class NowyUzytkownikSystemuViewModel : JedenViewModel<UzytkownicySystemu>
     {
-        #region DB
-        private BibliotekaEntities bibliotekaEntites;
-        #endregion
-        #region Item
-        private UzytkownicySystemu uzytkownicySystemu;
-        #endregion
-        #region Command
-        //to jest komenta, ktora zostanie podpieta pod przycisk zapisz i zamknij i ona wywoła funkcje SaveAndClose
-        private BaseCommand _SaveCommand;
-        public ICommand SaveCommand
-        {
-            get
-            {
-                if (_SaveCommand == null)
-                    _SaveCommand = new BaseCommand(() => SaveAndClose());
-                return _SaveCommand;
-            }
-        }
-        #endregion
+
         #region Konstruktor
         public NowyUzytkownikSystemuViewModel()
+            :base("Użytkownicy Systemu")
         {
-            base.DisplayName = "Użytkownik Systemu";
-            bibliotekaEntites = new BibliotekaEntities();
-            uzytkownicySystemu = new UzytkownicySystemu();
+            item = new UzytkownicySystemu();
         }
         #endregion
 
@@ -45,11 +26,11 @@ namespace MVVMFirma.ViewModels
         {
             get
             {
-                return uzytkownicySystemu.Login;
+                return item.Login;
             }
             set
             {
-                uzytkownicySystemu.Login = value;
+                item.Login = value;
                 OnPropertyChanged(() => Login);
             }
         }
@@ -58,11 +39,11 @@ namespace MVVMFirma.ViewModels
         {
             get
             {
-                return uzytkownicySystemu.Haslo;
+                return item.Haslo;
             }
             set
             {
-                uzytkownicySystemu.Haslo = value;
+                item.Haslo = value;
                 OnPropertyChanged(() => Haslo);
             }
         }
@@ -71,25 +52,20 @@ namespace MVVMFirma.ViewModels
         {
             get
             {
-                return uzytkownicySystemu.Rola;
+                return item.Rola;
             }
             set
             {
-                uzytkownicySystemu.Rola = value;
+                item.Rola = value;
                 OnPropertyChanged(() => Rola);
             }
         }
         #endregion
         #region Helpers
-        public void Save()
+        public override void Save()
         {
-            bibliotekaEntites.UzytkownicySystemu.Add(uzytkownicySystemu);//dodaje usera do lokalnej kolekcji
+            bibliotekaEntites.UzytkownicySystemu.Add(item);//dodaje usera do lokalnej kolekcji
             bibliotekaEntites.SaveChanges();//zapisuje zmiany do bazy danych
-        }
-        public void SaveAndClose()
-        {
-            Save();
-            base.OnRequestClose();//zmaknięcie zakładki
         }
         #endregion
     }
