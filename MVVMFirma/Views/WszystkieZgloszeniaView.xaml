@@ -9,8 +9,9 @@
     <Grid Background="AntiqueWhite">
         <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding List}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
-                <DataGridTextColumn Header="ID Czytelnika" Binding="{Binding IdCzytelnika}"/>
+                <DataGridTextColumn Header="Id" Binding="{Binding IdZgloszenia}"/>
+                <DataGridTextColumn Header="Imie zgłaszającego" Binding="{Binding CzytelnikImie}"/>
+                <DataGridTextColumn Header="Nazwisko zgłaszającego" Binding="{Binding CzytelnikNazwisko}"/>
                 <DataGridTextColumn Header="Opis zgłoszenia" Binding="{Binding Opis}"/>
                 <DataGridTextColumn Header="Data zgłoszenia" Binding="{Binding DataZgloszenia}"/>
             </DataGrid.Columns>
