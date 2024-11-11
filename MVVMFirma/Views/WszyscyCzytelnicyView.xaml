@@ -9,7 +9,7 @@
     <Grid Background="AntiqueWhite">
         <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding List}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Id" Binding="{Binding IdCzytelnika}"/>
                 <DataGridTextColumn Header="Imię" Binding="{Binding Imie}"/>
                 <DataGridTextColumn Header="Nazwisko" Binding="{Binding Nazwisko}"/>
                 <DataGridTextColumn Header="ID Adresu" Binding="{Binding IdAdresu}"/>
