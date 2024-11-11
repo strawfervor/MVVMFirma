@@ -12,9 +12,12 @@
                 <DataGridTextColumn Header="Id" Binding="{Binding IdCzytelnika}"/>
                 <DataGridTextColumn Header="Imię" Binding="{Binding Imie}"/>
                 <DataGridTextColumn Header="Nazwisko" Binding="{Binding Nazwisko}"/>
-                <DataGridTextColumn Header="ID Adresu" Binding="{Binding IdAdresu}"/>
-                <DataGridTextColumn Header="Rodzaj Członkostwa" Binding="{Binding IdRodzajuCzlonkowstwa}"/>
+                <DataGridTextColumn Header="Ulica" Binding="{Binding AdresUlica}"/>
+                <DataGridTextColumn Header="Numer domu" Binding="{Binding AdresNumerDomu}"/>
+                <DataGridTextColumn Header="Miejscowość" Binding="{Binding AdresMiejscowosc}"/>
+                <DataGridTextColumn Header="Rodzaj Członkostwa" Binding="{Binding RodzajeCzlonkostwaNazwaCzlonkowstwa}"/>
                 <DataGridTextColumn Header="Ilość wypożyczonych książek" Binding="{Binding IloscWypozyczonychKsiazek}"/>
+                <DataGridTextColumn Header="Maksymalna ilość wypożyczonych książek" Binding="{Binding MaksWypozyczen}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

@@ -37,6 +37,7 @@ namespace MVVMFirma.ViewModels
                        AdresMiejscowosc = czytelnik.Adres.Miejscowosc,
                        RodzajeCzlonkostwaNazwaCzlonkowstwa = czytelnik.RodzajCzlonkostwa.NazwaCzlonkowstwa,
                        IloscWypozyczonychKsiazek = czytelnik.IloscWypozyczonychKsiazek,
+                       MaksWypozyczen = czytelnik.RodzajCzlonkostwa.MaxKsiazekWypozyczonych,
                    }
                 );
         }

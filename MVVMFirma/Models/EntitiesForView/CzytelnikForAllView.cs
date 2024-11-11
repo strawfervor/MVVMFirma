@@ -26,6 +26,8 @@ namespace MVVMFirma.Models.EntitiesForView
 
 
         public int? IloscWypozyczonychKsiazek { get; set; }
+
+        public int? MaksWypozyczen {  get; set; }
     }
 
     
