@@ -1,4 +1,5 @@
 ﻿using MVVMFirma.Models.Entities;
+using MVVMFirma.Models.EntitiesForView;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MVVMFirma.ViewModels
 {
-    public class WszystkieRezerwacjeViewModel : WszystkieViewModel<Rezerwacje>
+    public class WszystkieRezerwacjeViewModel : WszystkieViewModel<RezerwacjaForAllView>
     {
         #region Constructor
 
@@ -22,9 +23,19 @@ namespace MVVMFirma.ViewModels
         #region Helpers
         public override void Load()
         {
-            List = new ObservableCollection<Rezerwacje>
+            List = new ObservableCollection<RezerwacjaForAllView>
                 (
-                   bibliotekaEntities.Rezerwacje.ToList()
+                   //tworzymy tutaj zapytanie linq
+                   from rezerwacja in bibliotekaEntities.Rezerwacje //dla każdegi czytelnika z bazy danych czytelników
+                   select new RezerwacjaForAllView //tworzymy nowe CzytelnikForAllView i uzupełniamy jego dane
+                   {
+                       IdRezerwacji = rezerwacja.Id,
+                       CzytelnikImie = rezerwacja.Czytelnicy.Imie,
+                       CzytelnikNazwisko = rezerwacja.Czytelnicy.Nazwisko,
+                       KsiazkaTytul = rezerwacja.Ksiazki.Tytul,
+                       DataRezerwacji = rezerwacja.DataRezerwacji,
+                       DataOdbioru = rezerwacja.DataOdbioruKsiazki,
+                   }
                 );
         }
         #endregion

@@ -73,9 +73,12 @@
     </Compile>
     <Compile Include="Helper\BaseCommand.cs" />
     <Compile Include="Models\EntitiesForView\CzytelnikForAllView.cs" />
+    <Compile Include="Models\EntitiesForView\EgzemplarzForAllView.cs" />
     <Compile Include="Models\EntitiesForView\KaraForAllView.cs" />
     <Compile Include="Models\EntitiesForView\KsiazkaForAllView.cs" />
     <Compile Include="Models\EntitiesForView\KsiazkaTagForAllView.cs" />
+    <Compile Include="Models\EntitiesForView\RezerwacjaForAllView.cs" />
+    <Compile Include="Models\EntitiesForView\WypozyczeniaForAllView.cs" />
     <Compile Include="Models\EntitiesForView\ZgloszenieForAllView.cs" />
     <Compile Include="Models\Entities\Adres.cs">
       <DependentUpon>ModelBiblioteka.tt</DependentUpon>
