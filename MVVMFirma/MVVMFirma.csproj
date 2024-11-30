@@ -72,9 +72,13 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Helper\BaseCommand.cs" />
+    <Compile Include="Models\BusinessLogic\DatabaseClass.cs" />
+    <Compile Include="Models\BusinessLogic\KsiazkaB.cs" />
     <Compile Include="Models\EntitiesForView\CzytelnikForAllView.cs" />
     <Compile Include="Models\EntitiesForView\EgzemplarzForAllView.cs" />
     <Compile Include="Models\EntitiesForView\KaraForAllView.cs" />
+    <Compile Include="Models\EntitiesForView\KeyAndValue.cs" />
+    <Compile Include="Models\EntitiesForView\KonkursyForAllView.cs" />
     <Compile Include="Models\EntitiesForView\KsiazkaForAllView.cs" />
     <Compile Include="Models\EntitiesForView\KsiazkaTagForAllView.cs" />
     <Compile Include="Models\EntitiesForView\RezerwacjaForAllView.cs" />
@@ -93,6 +97,9 @@
       <DependentUpon>ModelBiblioteka.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entities\Kary.cs">
+      <DependentUpon>ModelBiblioteka.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\Konkursy.cs">
       <DependentUpon>ModelBiblioteka.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entities\Ksiazki.cs">
@@ -157,18 +164,21 @@
     <Compile Include="ViewModels\NowyAutorViewModel.cs" />
     <Compile Include="ViewModels\NowyCzytelnikViewModel.cs" />
     <Compile Include="ViewModels\NowyEgzemplarzViewModel.cs" />
+    <Compile Include="ViewModels\NowyKonkursViewModel.cs" />
     <Compile Include="ViewModels\NowyKsiazkaTagViewModel.cs" />
     <Compile Include="ViewModels\NowyRodzajCzlonkostwaViewModel.cs" />
     <Compile Include="ViewModels\NowyRodzajLiterackiViewModel.cs" />
     <Compile Include="ViewModels\NowyTagViewModel.cs" />
     <Compile Include="ViewModels\NowyTowarViewModel.cs" />
     <Compile Include="ViewModels\NowyUzytkownikSystemuViewModel.cs" />
+    <Compile Include="ViewModels\RaportWypozyczenViewModel.cs" />
     <Compile Include="ViewModels\WorkspaceViewModel.cs" />
     <Compile Include="ViewModels\WszyscyAutorzyViewModel.cs" />
     <Compile Include="ViewModels\WszyscyUzytkownicySystemuViewModel.cs" />
     <Compile Include="ViewModels\WszystkieAdresyViewModel.cs" />
     <Compile Include="ViewModels\WszystkieEgzemplarzeViewModel.cs" />
     <Compile Include="ViewModels\WszystkieKaryViewModel.cs" />
+    <Compile Include="ViewModels\WszystkieKonkursyViewModel.cs" />
     <Compile Include="ViewModels\WszystkieKsiazkaTagViewModel.cs" />
     <Compile Include="ViewModels\WszystkieKsiazkiViewModel.cs" />
     <Compile Include="ViewModels\WszystkieRezerwacjeViewModel.cs" />
@@ -214,6 +224,9 @@
     <Compile Include="Views\NowyEgzemplarzView.xaml.cs">
       <DependentUpon>NowyEgzemplarzView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\NowyKonkursView.xaml.cs">
+      <DependentUpon>NowyKonkursView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\NowyKsiazkaTagView.xaml.cs">
       <DependentUpon>NowyKsiazkaTagView.xaml</DependentUpon>
     </Compile>
@@ -228,6 +241,9 @@
     </Compile>
     <Compile Include="Views\NowyUzytkownikSystemuView.xaml.cs">
       <DependentUpon>NowyUzytkownikSystemuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RaportWypozyczenView.xaml.cs">
+      <DependentUpon>RaportWypozyczenView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\WszyscyAutorzyView.xaml.cs">
       <DependentUpon>WszyscyAutorzyView.xaml</DependentUpon>
@@ -246,6 +262,9 @@
     </Compile>
     <Compile Include="Views\WszystkieKaryView.xaml.cs">
       <DependentUpon>WszystkieKaryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WszystkieKonkursy.xaml.cs">
+      <DependentUpon>WszystkieKonkursy.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\WszystkieKsiazkaTagView.xaml.cs">
       <DependentUpon>WszystkieKsiazkaTagView.xaml</DependentUpon>
@@ -362,6 +381,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\NowyKonkursView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\NowyKsiazkaTagView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -379,6 +402,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\NowyUzytkownikSystemuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RaportWypozyczenView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -403,6 +430,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\WszystkieKaryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WszystkieKonkursy.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

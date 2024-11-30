@@ -37,6 +37,9 @@ namespace MVVMFirma.ViewModels
             {
                 //Wszystkie*ViewModel
                 new CommandViewModel(
+                    "███ Pokaż: ███",
+                    new BaseCommand(() => this.ShowAll(new WszyscyAutorzyViewModel()))),
+                new CommandViewModel(
                     "Autorzy",
                     new BaseCommand(() => this.ShowAll(new WszyscyAutorzyViewModel()))),
                 new CommandViewModel(
@@ -81,10 +84,15 @@ namespace MVVMFirma.ViewModels
                 new CommandViewModel(
                     "Czytelnicy",
                     new BaseCommand(() => this.ShowAll(new WszyswcyCzytelnicyViewModel()))),
+                new CommandViewModel(
+                    "Konkursy",
+                    new BaseCommand(() => this.ShowAll(new WszystkieKonkursyViewModel()))),
 
 
                 //poniżej idą Nowe*ViewModel
-
+                new CommandViewModel(
+                    "███ Dodaj: ███",
+                    new BaseCommand(() => this.CreateView(new NowaKaraViewModel()))),
                 new CommandViewModel(
                     "Kara",
                     new BaseCommand(() => this.CreateView(new NowaKaraViewModel()))),
@@ -142,8 +150,20 @@ namespace MVVMFirma.ViewModels
                     new BaseCommand(() => this.CreateView(new NowyTagViewModel()))),
 
                 new CommandViewModel(
+                    "Konkurs",
+                    new BaseCommand(() => this.CreateView(new NowyKonkursViewModel()))),
+
+                new CommandViewModel(
                     "Użytkownik Systemu",
                     new BaseCommand(() => this.CreateView(new NowyUzytkownikSystemuViewModel()))),
+
+                //poniżej idą pozostałe sytuacje:
+                new CommandViewModel(
+                    "███ Inne: ███",
+                    new BaseCommand(() => this.ShowAll(new RaportWypozyczenViewModel()))),
+                new CommandViewModel(
+                    "Raport Wypożyczeń",
+                    new BaseCommand(() => this.ShowAll(new RaportWypozyczenViewModel()))),
             };
         }
         #endregion

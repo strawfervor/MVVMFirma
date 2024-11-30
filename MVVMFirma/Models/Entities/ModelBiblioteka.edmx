@@ -57,6 +57,18 @@
           <Property Name="Opis" Type="nvarchar" MaxLength="255" />
           <Property Name="DataNaliczenia" Type="datetime" />
         </EntityType>
+        <EntityType Name="Konkursy">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NazwaKonkursu" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Opis" Type="nvarchar(max)" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdZwyciezcy" Type="int" />
+          <Property Name="DataZakonczenia" Type="datetime" />
+          <Property Name="DataRozpoczecia" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="Ksiazki">
           <Key>
             <PropertyRef Name="Id" />
@@ -290,6 +302,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Konkursy_Czytelnicy">
+          <End Role="Czytelnicy" Type="Self.Czytelnicy" Multiplicity="0..1" />
+          <End Role="Konkursy" Type="Self.Konkursy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Czytelnicy">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Konkursy">
+              <PropertyRef Name="IdZwyciezcy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Ksiazki_RodzajLiteracki">
           <End Role="RodzajLiteracki" Type="Self.RodzajLiteracki" Multiplicity="0..1" />
           <End Role="Ksiazki" Type="Self.Ksiazki" Multiplicity="*" />
@@ -332,6 +356,7 @@
           <EntitySet Name="Czytelnicy" EntityType="Self.Czytelnicy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Egzemplarze" EntityType="Self.Egzemplarze" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Kary" EntityType="Self.Kary" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Konkursy" EntityType="Self.Konkursy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ksiazki" EntityType="Self.Ksiazki" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="KsiazkiTag" EntityType="Self.KsiazkiTag" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rezerwacje" EntityType="Self.Rezerwacje" Schema="dbo" store:Type="Tables" />
@@ -386,6 +411,10 @@
           <AssociationSet Name="FK_Czytelnicy_RodzajCzlonkostwa" Association="Self.FK_Czytelnicy_RodzajCzlonkostwa">
             <End Role="RodzajCzlonkostwa" EntitySet="RodzajCzlonkostwa" />
             <End Role="Czytelnicy" EntitySet="Czytelnicy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Konkursy_Czytelnicy" Association="Self.FK_Konkursy_Czytelnicy">
+            <End Role="Czytelnicy" EntitySet="Czytelnicy" />
+            <End Role="Konkursy" EntitySet="Konkursy" />
           </AssociationSet>
           <AssociationSet Name="FK_Ksiazki_RodzajLiteracki" Association="Self.FK_Ksiazki_RodzajLiteracki">
             <End Role="RodzajLiteracki" EntitySet="RodzajLiteracki" />
@@ -444,6 +473,7 @@
           <NavigationProperty Name="Wypozyczenia" Relationship="Self.FK__Wypozycze__IdCzy__46E78A0C" FromRole="Czytelnicy" ToRole="Wypozyczenia" />
           <NavigationProperty Name="Zgloszenia" Relationship="Self.FK__Zgloszeni__IdCzy__5CD6CB2B" FromRole="Czytelnicy" ToRole="Zgloszenia" />
           <NavigationProperty Name="RodzajCzlonkostwa" Relationship="Self.FK_Czytelnicy_RodzajCzlonkostwa" FromRole="Czytelnicy" ToRole="RodzajCzlonkostwa" />
+          <NavigationProperty Name="Konkursy" Relationship="BibliotekaModel.FK_Konkursy_Czytelnicy" FromRole="Czytelnicy" ToRole="Konkursy" />
         </EntityType>
         <EntityType Name="Egzemplarze">
           <Key>
@@ -792,6 +822,11 @@
             <End Role="Tagi" EntitySet="Tagi" />
             <End Role="KsiazkiTag" EntitySet="KsiazkiTag" />
           </AssociationSet>
+          <EntitySet Name="Konkursy" EntityType="BibliotekaModel.Konkursy" />
+          <AssociationSet Name="FK_Konkursy_Czytelnicy" Association="BibliotekaModel.FK_Konkursy_Czytelnicy">
+            <End Role="Czytelnicy" EntitySet="Czytelnicy" />
+            <End Role="Konkursy" EntitySet="Konkursy" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="KsiazkiTag">
           <Key>
@@ -824,6 +859,31 @@
             </Principal>
             <Dependent Role="KsiazkiTag">
               <PropertyRef Name="IdTagu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Konkursy">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NazwaKonkursu" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Opis" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdZwyciezcy" Type="Int32" />
+          <Property Name="DataZakonczenia" Type="DateTime" Precision="3" />
+          <Property Name="DataRozpoczecia" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Czytelnicy" Relationship="BibliotekaModel.FK_Konkursy_Czytelnicy" FromRole="Konkursy" ToRole="Czytelnicy" />
+        </EntityType>
+        <Association Name="FK_Konkursy_Czytelnicy">
+          <End Type="BibliotekaModel.Czytelnicy" Role="Czytelnicy" Multiplicity="0..1" />
+          <End Type="BibliotekaModel.Konkursy" Role="Konkursy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Czytelnicy">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Konkursy">
+              <PropertyRef Name="IdZwyciezcy" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -998,6 +1058,19 @@
               <MappingFragment StoreEntitySet="KsiazkiTag">
                 <ScalarProperty Name="IdTagu" ColumnName="IdTagu" />
                 <ScalarProperty Name="IdKsiazki" ColumnName="IdKsiazki" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Konkursy">
+            <EntityTypeMapping TypeName="BibliotekaModel.Konkursy">
+              <MappingFragment StoreEntitySet="Konkursy">
+                <ScalarProperty Name="DataRozpoczecia" ColumnName="DataRozpoczecia" />
+                <ScalarProperty Name="DataZakonczenia" ColumnName="DataZakonczenia" />
+                <ScalarProperty Name="IdZwyciezcy" ColumnName="IdZwyciezcy" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+                <ScalarProperty Name="NazwaKonkursu" ColumnName="NazwaKonkursu" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -14,7 +14,7 @@ namespace MVVMFirma.ViewModels
         #region Constructor
 
         public WszystkieKsiazkiViewModel()
-            : base("Użytkownicy Systemu")
+            : base("Książki")
         {
         }
 

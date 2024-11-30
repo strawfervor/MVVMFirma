@@ -20,11 +20,11 @@
         </Grid.RowDefinitions>
         <Menu Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Margin="2">
             <MenuItem Header="_Plik"/>
-            <MenuItem Header="_Magazyn">
-                <MenuItem Header="Wszystkie towary"/>
-                <MenuItem Header="Nowy towar"/>
-                <MenuItem Header="Wydanie Zewnętrzne (WZ)"/>
-                <MenuItem Header="Przyjęcie Zewnętrzne (PZ)"/>
+            <MenuItem Header="_Biblioteka">
+                <MenuItem Header="Wszystkie ksiązki"/>
+                <MenuItem Header="Dodaj ksiązkę"/>
+                <MenuItem Header="Sprawdź dostępność"/>
+                <MenuItem Header="Edytuj adres"/>
             </MenuItem>
             <MenuItem Header="Program"/>
         </Menu>
@@ -33,13 +33,15 @@
             <ToggleButton Width="32" Height="32" Background="LightCoral" Margin="2"/>
         </ToolBar>
         <Border Grid.Row="2" Grid.Column="0">
-            <HeaderedContentControl 
+            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                <HeaderedContentControl 
                 Header="Operacje" 
                 Background="Aqua" 
                 Content="{Binding Path=Commands}" 
                 ContentTemplate="{StaticResource CommandsTemplate}"
                 Style="{StaticResource MainHCCStyle}"
                 />
+            </ScrollViewer>
         </Border>
         <Border Grid.Row="2" Grid.Column="1">
             <HeaderedContentControl 

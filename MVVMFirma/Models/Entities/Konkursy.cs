@@ -15,24 +15,26 @@ namespace MVVMFirma.Models.Entities
 using System;
     using System.Collections.Generic;
     
-public partial class Rezerwacje
+public partial class Konkursy
 {
 
     public int Id { get; set; }
 
-    public Nullable<int> IdKsiazki { get; set; }
+    public string NazwaKonkursu { get; set; }
 
-    public Nullable<int> IdCzytelnika { get; set; }
+    public string Opis { get; set; }
 
-    public Nullable<System.DateTime> DataRezerwacji { get; set; }
+    public string Status { get; set; }
 
-    public Nullable<System.DateTime> DataOdbioruKsiazki { get; set; }
+    public Nullable<int> IdZwyciezcy { get; set; }
+
+    public Nullable<System.DateTime> DataZakonczenia { get; set; }
+
+    public System.DateTime DataRozpoczecia { get; set; }
 
 
 
     public virtual Czytelnicy Czytelnicy { get; set; }
-
-    public virtual Ksiazki Ksiazki { get; set; }
 
 }
 
