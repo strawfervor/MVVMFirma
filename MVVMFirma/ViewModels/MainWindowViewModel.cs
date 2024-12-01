@@ -40,20 +40,23 @@ namespace MVVMFirma.ViewModels
                     "███ Pokaż: ███",
                     new BaseCommand(() => this.ShowAll(new WszyscyAutorzyViewModel()))),
                 new CommandViewModel(
+                    "Adresy",
+                    new BaseCommand(() => this.ShowAll(new WszystkieAdresyViewModel()))),
+                new CommandViewModel(
                     "Autorzy",
                     new BaseCommand(() => this.ShowAll(new WszyscyAutorzyViewModel()))),
                 new CommandViewModel(
-                    "Użytkownicy Systemu",
-                    new BaseCommand(() => this.ShowAll(new WszyscyUzytkownicySystemuViewModel()))),
-                new CommandViewModel(
-                    "Adresy",
-                    new BaseCommand(() => this.ShowAll(new WszystkieAdresyViewModel()))),
+                    "Czytelnicy",
+                    new BaseCommand(() => this.ShowAll(new WszyswcyCzytelnicyViewModel()))),
                 new CommandViewModel(
                     "Egzemplarze",
                     new BaseCommand(() => this.ShowAll(new WszystkieEgzemplarzeViewModel()))),
                 new CommandViewModel(
                     "Kary",
                     new BaseCommand(() => this.ShowAll(new WszystkieKaryViewModel()))),
+                new CommandViewModel(
+                    "Konkursy",
+                    new BaseCommand(() => this.ShowAll(new WszystkieKonkursyViewModel()))),
                 new CommandViewModel(
                     "Książka-Tag (wszystkie)",
                     new BaseCommand(() => this.ShowAll(new WszystkieKsiazkaTagViewModel()))),
@@ -73,6 +76,9 @@ namespace MVVMFirma.ViewModels
                     "Tagi",
                     new BaseCommand(() => this.ShowAll(new WszystkieTagiViewModel()))),
                 new CommandViewModel(
+                    "Użytkownicy Systemu",
+                    new BaseCommand(() => this.ShowAll(new WszyscyUzytkownicySystemuViewModel()))),
+                new CommandViewModel(
                     "Wydawnictwa",
                     new BaseCommand(() => this.ShowAll(new WszystkieWydawnictwaViewModel()))),
                 new CommandViewModel(
@@ -81,12 +87,6 @@ namespace MVVMFirma.ViewModels
                 new CommandViewModel(
                     "Zgłoszenia",
                     new BaseCommand(() => this.ShowAll(new WszystkieZgloszeniaViewModel()))),
-                new CommandViewModel(
-                    "Czytelnicy",
-                    new BaseCommand(() => this.ShowAll(new WszyswcyCzytelnicyViewModel()))),
-                new CommandViewModel(
-                    "Konkursy",
-                    new BaseCommand(() => this.ShowAll(new WszystkieKonkursyViewModel()))),
 
 
                 //poniżej idą Nowe*ViewModel
@@ -94,68 +94,53 @@ namespace MVVMFirma.ViewModels
                     "███ Dodaj: ███",
                     new BaseCommand(() => this.CreateView(new NowaKaraViewModel()))),
                 new CommandViewModel(
-                    "Kara",
-                    new BaseCommand(() => this.CreateView(new NowaKaraViewModel()))),
-
-                new CommandViewModel(
-                    "Książka",
-                    new BaseCommand(() => this.CreateView(new NowaKsiazkaViewModel()))),
-
-                new CommandViewModel(
-                    "Rezerwacja",
-                    new BaseCommand(() => this.CreateView(new NowaRezerwacjaViewModel()))),
-
-                new CommandViewModel(
-                    "Wydawnictwo",
-                    new BaseCommand(() => this.CreateView(new NoweWydawnictwoViewModel()))),
-
-                new CommandViewModel(
-                    "Wypożyczenie",
-                    new BaseCommand(() => this.CreateView(new NoweWypozyczenieViewModel()))),
-
-                new CommandViewModel(
-                    "Zgłoszenie",
-                    new BaseCommand(() => this.CreateView(new NoweZgloszenieViewModel()))),
-
-                new CommandViewModel(
                     "Adres",
                     new BaseCommand(() => this.CreateView(new NowyAdresViewModel()))),
-
                 new CommandViewModel(
                     "Autor",
                     new BaseCommand(() => this.CreateView(new NowyAutorViewModel()))),
-
                 new CommandViewModel(
                     "Czytelnik",
                     new BaseCommand(() => this.CreateView(new NowyCzytelnikViewModel()))),
-
                 new CommandViewModel(
                     "Egzemplarz",
                     new BaseCommand(() => this.CreateView(new NowyEgzemplarzViewModel()))),
-
                 new CommandViewModel(
-                    "Książka-Tag (dodaj)",
-                    new BaseCommand(() => this.CreateView(new NowyKsiazkaTagViewModel()))),
-
-                new CommandViewModel(
-                    "Rodzaj Członkostwa",
-                    new BaseCommand(() => this.CreateView(new NowyRodzajCzlonkostwaViewModel()))),
-
-                new CommandViewModel(
-                    "RodzajLitercki",
-                    new BaseCommand(() => this.CreateView(new NowyRodzajLiterackiViewModel()))),
-
-                new CommandViewModel(
-                    "Tag",
-                    new BaseCommand(() => this.CreateView(new NowyTagViewModel()))),
-
+                    "Kara",
+                    new BaseCommand(() => this.CreateView(new NowaKaraViewModel()))),
                 new CommandViewModel(
                     "Konkurs",
                     new BaseCommand(() => this.CreateView(new NowyKonkursViewModel()))),
-
+                new CommandViewModel(
+                    "Książka",
+                    new BaseCommand(() => this.CreateView(new NowaKsiazkaViewModel()))),
+                new CommandViewModel(
+                    "Książka-Tag (dodaj)",
+                    new BaseCommand(() => this.CreateView(new NowyKsiazkaTagViewModel()))),
+                new CommandViewModel(
+                    "Rezerwacja",
+                    new BaseCommand(() => this.CreateView(new NowaRezerwacjaViewModel()))),
+                new CommandViewModel(
+                    "Rodzaj Członkostwa",
+                    new BaseCommand(() => this.CreateView(new NowyRodzajCzlonkostwaViewModel()))),
+                new CommandViewModel(
+                    "RodzajLitercki",
+                    new BaseCommand(() => this.CreateView(new NowyRodzajLiterackiViewModel()))),
+                new CommandViewModel(
+                    "Tag",
+                    new BaseCommand(() => this.CreateView(new NowyTagViewModel()))),
                 new CommandViewModel(
                     "Użytkownik Systemu",
                     new BaseCommand(() => this.CreateView(new NowyUzytkownikSystemuViewModel()))),
+                new CommandViewModel(
+                    "Wydawnictwo",
+                    new BaseCommand(() => this.CreateView(new NoweWydawnictwoViewModel()))),
+                new CommandViewModel(
+                    "Wypożyczenie",
+                    new BaseCommand(() => this.CreateView(new NoweWypozyczenieViewModel()))),
+                new CommandViewModel(
+                    "Zgłoszenie",
+                    new BaseCommand(() => this.CreateView(new NoweZgloszenieViewModel()))),
 
                 //poniżej idą pozostałe sytuacje:
                 new CommandViewModel(
