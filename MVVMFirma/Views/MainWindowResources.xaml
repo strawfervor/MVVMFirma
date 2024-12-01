@@ -113,6 +113,10 @@
         <vw:NowyTagView/>
     </DataTemplate>
 
+    <DataTemplate DataType="{x:Type vm:NowyKonkursViewModel}">
+        <vw:NowyKonkursView/>
+    </DataTemplate>
+
     <DataTemplate DataType="{x:Type vm:NowyUzytkownikSystemuViewModel}">
         <vw:NowyUzytkownikSystemuView/>
     </DataTemplate>
