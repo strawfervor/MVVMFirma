@@ -115,7 +115,7 @@ namespace MVVMFirma.ViewModels
                     "Książka",
                     new BaseCommand(() => this.CreateView(new NowaKsiazkaViewModel()))),
                 new CommandViewModel(
-                    "Książka-Tag (dodaj)",
+                    "Książka-Tag",
                     new BaseCommand(() => this.CreateView(new NowyKsiazkaTagViewModel()))),
                 new CommandViewModel(
                     "Rezerwacja",
@@ -124,7 +124,7 @@ namespace MVVMFirma.ViewModels
                     "Rodzaj Członkostwa",
                     new BaseCommand(() => this.CreateView(new NowyRodzajCzlonkostwaViewModel()))),
                 new CommandViewModel(
-                    "RodzajLitercki",
+                    "Rodzaj litercki",
                     new BaseCommand(() => this.CreateView(new NowyRodzajLiterackiViewModel()))),
                 new CommandViewModel(
                     "Tag",
@@ -146,6 +146,9 @@ namespace MVVMFirma.ViewModels
                 new CommandViewModel(
                     "███ Inne: ███",
                     new BaseCommand(() => this.ShowAll(new RaportWypozyczenViewModel()))),
+                new CommandViewModel(
+                    "Dostępność egzemplarzy",
+                    new BaseCommand(() => this.ShowAll(new DostepnoscViewModel()))),
                 new CommandViewModel(
                     "Raport Wypożyczeń",
                     new BaseCommand(() => this.ShowAll(new RaportWypozyczenViewModel()))),

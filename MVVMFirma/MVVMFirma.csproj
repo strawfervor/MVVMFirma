@@ -74,6 +74,7 @@
     <Compile Include="Helper\BaseCommand.cs" />
     <Compile Include="Models\BusinessLogic\DatabaseClass.cs" />
     <Compile Include="Models\BusinessLogic\KsiazkaB.cs" />
+    <Compile Include="Models\BusinessLogic\DostepnoscB.cs" />
     <Compile Include="Models\EntitiesForView\CzytelnikForAllView.cs" />
     <Compile Include="Models\EntitiesForView\EgzemplarzForAllView.cs" />
     <Compile Include="Models\EntitiesForView\KaraForAllView.cs" />
@@ -152,6 +153,7 @@
     </Compile>
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\CommandViewModel.cs" />
+    <Compile Include="ViewModels\DostepnoscViewModel.cs" />
     <Compile Include="ViewModels\JedenViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\NowaKaraViewModel.cs" />
@@ -190,6 +192,9 @@
     <Compile Include="ViewModels\WszystkieWypozyczeniaViewModel.cs" />
     <Compile Include="ViewModels\WszystkieZgloszeniaViewModel.cs" />
     <Compile Include="ViewModels\WszyswcyCzytelnicyViewModel.cs" />
+    <Compile Include="Views\DostepnoscKsiazkiView.xaml.cs">
+      <DependentUpon>DostepnoscKsiazkiView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\JedenViewBase.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -332,6 +337,10 @@
     <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\DostepnoscKsiazkiView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MainWindow.xaml">
       <SubType>Designer</SubType>

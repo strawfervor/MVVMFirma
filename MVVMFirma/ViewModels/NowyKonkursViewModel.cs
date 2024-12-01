@@ -15,6 +15,8 @@ namespace MVVMFirma.ViewModels
             : base("Konkursy (dodaj)")
         {
             item = new Konkursy();
+            //ustawiamy domyslne wartosci pola daty
+            DataRozpoczecia = DateTime.Now;
         }
         #endregion
 

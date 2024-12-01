@@ -51,8 +51,13 @@
     <DataTemplate DataType="{x:Type vm:WszystkieKonkursyViewModel}">
         <vw:WszystkieKonkursy/>
     </DataTemplate>
+    
+    
     <DataTemplate DataType="{x:Type vm:RaportWypozyczenViewModel}">
         <vw:RaportWypozyczenView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:DostepnoscViewModel}">
+        <vw:DostepnoscKsiazkiView/>
     </DataTemplate>
 
 
