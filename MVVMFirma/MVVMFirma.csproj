@@ -78,6 +78,7 @@
     <Compile Include="Models\BusinessLogic\DatabaseClass.cs" />
     <Compile Include="Models\BusinessLogic\KsiazkaB.cs" />
     <Compile Include="Models\BusinessLogic\DostepnoscB.cs" />
+    <Compile Include="Models\BusinessLogic\RodzajCzlonkostwaB.cs" />
     <Compile Include="Models\BusinessLogic\RodzajeLiterackieB.cs" />
     <Compile Include="Models\BusinessLogic\TagiB.cs" />
     <Compile Include="Models\BusinessLogic\WydawnictwaB.cs" />
