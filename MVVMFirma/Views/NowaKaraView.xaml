@@ -6,8 +6,31 @@
              xmlns:local="clr-namespace:MVVMFirma.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <Label>Dodaj nową karę...</Label>
-            
+    <Grid Background="AntiqueWhite">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Column="0" Grid.Row="0" Margin="0,8,0,8" Content="Czytelnik"/>
+        <ComboBox Grid.Column="1" Grid.Row="0" Margin="0,8,0,8"
+                    ItemsSource="{Binding CzytelnicyItems}" 
+                    DisplayMemberPath="Value" 
+                    SelectedValuePath="Key" 
+                    SelectedValue="{Binding Path=IdCzytelnika, Mode=TwoWay}"/>
+
+        <Label Grid.Column="0" Grid.Row="2" Margin="0,8,0,8" Content="Kwota"/>
+        <TextBox Grid.Column="1" Grid.Row="2" Margin="0,8,0,8" Text="{Binding Path=Kwota, UpdateSourceTrigger=PropertyChanged, StringFormat=N2}"/>
+
+        <Label Grid.Column="0" Grid.Row="1" Margin="0,8,0,8" Content="Opis"/>
+        <TextBox Grid.Column="1" Grid.Row="1" Margin="0,8,0,8" Text="{Binding Path=Opis, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <Label Grid.Column="0" Grid.Row="3" Margin="0,8,0,8" Content="Data naliczenia"/>
+        <DatePicker Grid.Column="1" Grid.Row="3" Margin="0,8,0,8" SelectedDate="{Binding Path=DataNaliczenia, UpdateSourceTrigger=PropertyChanged}"/>
     </Grid>
 </local:JedenViewBase>

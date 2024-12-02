@@ -8,24 +8,24 @@ using System.Threading.Tasks;
 
 namespace MVVMFirma.Models.BusinessLogic
 {
-    public class AdresyB : DatabaseClass
+    internal class WydawnictwaB : DatabaseClass
     {
         #region Konstruktor
-        public AdresyB(BibliotekaEntities db)
+        public WydawnictwaB(BibliotekaEntities db)
         : base(db) { }
         #endregion
 
         #region Funkcje biznesowe
         //dodamy fukcje, ktora bedzie zwracała ID ksiażki oraz jej nazwy i ISBN w KeyAndValue (poniżej trzeba było kliknąć w <KeyAndValue> drugim myszkiem i wybrać quick action i pierwsza opcje, zeby naprawic błąd)
-        public IQueryable<KeyAndValue> GetAdresyKeyAndValueItems()
+        public IQueryable<KeyAndValue> GetWydawnictwaKeyAndValueItems()
         {
             return
                 (
-                    from adres in db.Adres
+                    from wydawnictwo in db.Wydawnictwa
                     select new KeyAndValue
                     {
-                        Key = adres.Id,
-                        Value = adres.Ulica + " " + adres.NumerDomu + ", " + adres.Miejscowosc,
+                        Key = wydawnictwo.Id,
+                        Value = wydawnictwo.Nazwa + ", " + wydawnictwo.Kraj,
                     }
                 ).ToList().AsQueryable();
         }

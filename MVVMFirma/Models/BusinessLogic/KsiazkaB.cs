@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 //funkcja dostarcza dane komboboxowi
 namespace MVVMFirma.Models.BusinessLogic
 {
-    internal class KsiazkaB:DatabaseClass
+    public class KsiazkaB:DatabaseClass
     {
         #region Konstruktor
             public KsiazkaB(BibliotekaEntities db) 
