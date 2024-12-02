@@ -16,6 +16,7 @@ namespace MVVMFirma.ViewModels
                     : base("Dodaj karę")
         {
             item = new Kary();
+            DataNaliczenia = DateTime.Now;
         }
         #endregion
 
