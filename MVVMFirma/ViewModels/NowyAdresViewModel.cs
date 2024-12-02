@@ -13,7 +13,7 @@ namespace MVVMFirma.ViewModels
     {
         #region Konstruktor
         public NowyAdresViewModel()
-                    : base("Dodaj karę")
+                    : base("Dodaj adres")
         {
             item = new Adres();
         }

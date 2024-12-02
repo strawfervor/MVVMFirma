@@ -12,7 +12,7 @@ namespace MVVMFirma.ViewModels
 
         #region Konstruktor
         public NowyKonkursViewModel()
-            : base("Konkursy (dodaj)")
+            : base("Dodaj konkurs")
         {
             item = new Konkursy();
             //ustawiamy domyslne wartosci pola daty

@@ -13,7 +13,7 @@ namespace MVVMFirma.ViewModels
     {
         #region Konstruktor
         public NoweZgloszenieViewModel()
-                    : base("Dodaj karę")
+                    : base("Dodaj zgłoszenie")
         {
             item = new Zgloszenia();
             DataZgloszenia = DateTime.Now;

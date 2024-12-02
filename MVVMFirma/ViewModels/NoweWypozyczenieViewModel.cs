@@ -13,7 +13,7 @@ namespace MVVMFirma.ViewModels
     {
         #region Konstruktor
             public NoweWypozyczenieViewModel() 
-                        :base("Wypożyczenie")
+                        :base("Dodaj wypożyczenie")
                     {
                         item = new Wypozyczenia();
                     }
