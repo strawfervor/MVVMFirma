@@ -25,7 +25,7 @@ namespace MVVMFirma.Models.BusinessLogic
                     select new KeyAndValue
                     {
                         Key = ksiazka.Id,
-                        Value = ksiazka.Tytul + " " + ksiazka.ISBN,
+                        Value = ksiazka.Tytul + ", autor: " + ksiazka.Autorzy.Nazwisko,
                     }
                 ).ToList().AsQueryable();
         }

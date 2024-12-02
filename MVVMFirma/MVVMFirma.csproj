@@ -72,9 +72,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Helper\BaseCommand.cs" />
+    <Compile Include="Models\BusinessLogic\AdresyB.cs" />
+    <Compile Include="Models\BusinessLogic\CzytelnicyB.cs" />
     <Compile Include="Models\BusinessLogic\DatabaseClass.cs" />
     <Compile Include="Models\BusinessLogic\KsiazkaB.cs" />
     <Compile Include="Models\BusinessLogic\DostepnoscB.cs" />
+    <Compile Include="Models\BusinessLogic\TagiB.cs" />
     <Compile Include="Models\EntitiesForView\CzytelnikForAllView.cs" />
     <Compile Include="Models\EntitiesForView\EgzemplarzForAllView.cs" />
     <Compile Include="Models\EntitiesForView\KaraForAllView.cs" />
