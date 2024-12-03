@@ -1,4 +1,6 @@
-﻿using MVVMFirma.Models.BusinessLogic;
+﻿using GalaSoft.MvvmLight.Messaging;
+using MVVMFirma.Helper;
+using MVVMFirma.Models.BusinessLogic;
 using MVVMFirma.Models.Entities;
 using MVVMFirma.Models.EntitiesForView;
 using System;
@@ -6,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace MVVMFirma.ViewModels
 {
@@ -17,6 +20,26 @@ namespace MVVMFirma.ViewModels
                     {
                         item = new Wypozyczenia();
                     }
+        #endregion
+
+        #region Commands
+
+        private BaseCommand _ShowCzytelnicy;//to jest komenda ktora bezdie wywoływała funkcje showCzytelnicy ktora bedzie wyświetlała wszystkich czytelnikow i bedzie uruchamiana przez przycisk z  ...
+        public ICommand ShowCzytelnicy
+        {
+            get
+            {
+                if (_ShowCzytelnicy == null)
+                    _ShowCzytelnicy = new BaseCommand(() => showCzytelnicy());
+                return _ShowCzytelnicy;
+            }
+        }
+
+        private void showCzytelnicy()
+        {
+            Messenger.Default.Send("CzytelnicyAll");
+        }
+
         #endregion
 
         #region Pola

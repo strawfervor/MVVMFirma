@@ -273,10 +273,10 @@ namespace MVVMFirma.ViewModels
                 CreateView(new NowyRodzajLiterackiViewModel());
             if (name == "TagiAdd")
                 CreateView(new NowyTagViewModel());
-            if (name == "WydawnictwaAdd")
-                CreateView(new NoweWydawnictwoViewModel());
             if (name == "CzytelnicyAdd")
                 CreateView(new NowyCzytelnikViewModel());
+            if (name == "CzytelnicyAll")
+                CreateView(new WszyswcyCzytelnicyViewModel());
         }
         #endregion
     }
