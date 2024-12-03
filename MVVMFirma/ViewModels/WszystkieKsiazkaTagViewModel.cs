@@ -14,7 +14,7 @@ namespace MVVMFirma.ViewModels
         #region Constructor
 
         public WszystkieKsiazkaTagViewModel()
-            : base("Książka-Tag (wszystkie)")
+            : base("Książka-Tag")
         {
         }
 

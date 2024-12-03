@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Windows.Data;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace MVVMFirma.ViewModels
 {
@@ -33,6 +34,8 @@ namespace MVVMFirma.ViewModels
         }
         private List<CommandViewModel> CreateCommands()
         {
+            //to jest messenger, który oczekuje na stringa i jak go złapie to wywołuje metodę open, która jest zdefiniowana w regionie prywatnych helpersów.
+            Messenger.Default.Register<string>(this, open);
             return new List<CommandViewModel>
             {
                 //Wszystkie*ViewModel
@@ -236,6 +239,44 @@ namespace MVVMFirma.ViewModels
             ICollectionView collectionView = CollectionViewSource.GetDefaultView(this.Workspaces);
             if (collectionView != null)
                 collectionView.MoveCurrentTo(workspace);
+        }
+
+        private void open(string name)//name to jest wysłany komunikat messengerem
+        {
+            if (name == "KaryAdd")
+                CreateView(new NowaKaraViewModel());
+            if (name == "AdresyAdd")
+                CreateView(new NowyAdresViewModel());
+            if (name == "RezerwacjeAdd")
+                CreateView(new NowaRezerwacjaViewModel());
+            if (name == "WydawnictwaAdd")
+                CreateView(new NoweWydawnictwoViewModel());
+            if (name == "WypożyczeniaAdd")
+                CreateView(new NoweWypozyczenieViewModel());
+            if (name == "ZgłoszeniaAdd")
+                CreateView(new NoweZgloszenieViewModel());
+            if (name == "AutorzyAdd")
+                CreateView(new NowyAutorViewModel());
+            if (name == "Użytkownicy SystemuAdd")
+                CreateView(new NowyUzytkownikSystemuViewModel());
+            if (name == "EgzemplarzeAdd")
+                CreateView(new NowyEgzemplarzViewModel());
+            if (name == "Konkursy (wszystkie)Add")
+                CreateView(new NowyKonkursViewModel());
+            if (name == "Książka-TagAdd")
+                CreateView(new NowyKsiazkaTagViewModel());
+            if (name == "KsiążkiAdd")
+                CreateView(new NowaKsiazkaViewModel());
+            if (name == "RodzajeCzlonkostwaAdd")
+                CreateView(new NowyRodzajCzlonkostwaViewModel());
+            if (name == "Rodzaje LiterackieAdd")
+                CreateView(new NowyRodzajLiterackiViewModel());
+            if (name == "TagiAdd")
+                CreateView(new NowyTagViewModel());
+            if (name == "WydawnictwaAdd")
+                CreateView(new NoweWydawnictwoViewModel());
+            if (name == "CzytelnicyAdd")
+                CreateView(new NowyCzytelnikViewModel());
         }
         #endregion
     }
