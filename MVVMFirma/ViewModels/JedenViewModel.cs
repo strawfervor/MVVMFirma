@@ -32,6 +32,17 @@ namespace MVVMFirma.ViewModels
                 return _SaveCommand;
             }
         }
+
+        private BaseCommand _CancelandCloseCommand;
+        public ICommand CancelandCloseCommand
+        {
+            get
+            {
+                if (_CancelandCloseCommand == null)
+                    _CancelandCloseCommand = new BaseCommand(() => CancelandClose());
+                return _CancelandCloseCommand;
+            }
+        }
         #endregion
 
 
@@ -50,6 +61,11 @@ namespace MVVMFirma.ViewModels
                 Save();
                 base.OnRequestClose();//zmaknięcie zakładki
             }
+
+        public void CancelandClose()
+        {
+            base.OnRequestClose();//zmaknięcie zakładki
+        }
         #endregion
     }
 }

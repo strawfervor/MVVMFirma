@@ -7,7 +7,8 @@
     <Window.Resources>
         <ResourceDictionary Source="MainWindowResources.xaml"  />
     </Window.Resources>
-    <Grid>
+    <Grid Background="#FAEBD7">
+        <!-- AntiqueWhite -->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150"/>
             <ColumnDefinition Width="*"/>
@@ -18,7 +19,8 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
-        <Menu Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Margin="2">
+        <Menu Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Margin="2" Background="#FAEBD7">
+            <!-- AntiqueWhite -->
             <MenuItem Header="_Plik"/>
             <MenuItem Header="_Biblioteka">
                 <MenuItem Header="Wszystkie ksiązki"/>
@@ -28,16 +30,17 @@
             </MenuItem>
             <MenuItem Header="Program"/>
         </Menu>
-        <ToolBar Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="2">
-            <ToggleButton Width="32" Height="32" Background="Blue" Margin="2"/>
-            <ToggleButton Width="32" Height="32" Background="LightCoral" Margin="2"/>
+        <ToolBar Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="2" Background="#FAEBD7">
+            <!-- AntiqueWhite -->
+            <ToggleButton Width="32" Height="32" Background="#B0C4DE" Margin="2"/>
+            <ToggleButton Width="32" Height="32" Background="#F08080" Margin="2"/>
         </ToolBar>
         <Border Grid.Row="2" Grid.Column="0">
             <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
                 <HeaderedContentControl 
                 Header="Operacje" 
-                Background="Aqua" 
-                Content="{Binding Path=Commands}" 
+                Background="#FFFF00"
+                    Content="{Binding Path=Commands}" 
                 ContentTemplate="{StaticResource CommandsTemplate}"
                 Style="{StaticResource MainHCCStyle}"
                 />
@@ -51,12 +54,13 @@
                 Style="{StaticResource MainHCCStyle}"
             />
         </Border>
-        <StatusBar Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2">
+        <StatusBar Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Background="#FAEBD7">
+            <!-- AntiqueWhite -->
             <StatusBarItem>
                 <TextBlock>Marcin Nowak</TextBlock>
             </StatusBarItem>
             <Separator/>
-            <StatusBarItem>
+            <StatusBarItem >
                 <TextBlock>WSB-NLU</TextBlock>
             </StatusBarItem>
         </StatusBar>
