@@ -33,15 +33,22 @@ namespace MVVMFirma.Models.BusinessLogic
         //}
         public List<string> RaportWypozyczen(int idKsiazki, DateTime DataOd, DateTime DataDo)
         {
-            return (
+            var wyniki = (
                 from pozycja in db.Wypozyczenia
                 where
                     pozycja.IdKsiazki == idKsiazki &&
-                    (
-                        (pozycja.DataWypozyczenia <= DataDo && pozycja.DataZwrotu >= DataOd)
-                    )
-                select 
-                    pozycja.Czytelnicy.Nazwisko
+                    (pozycja.DataWypozyczenia <= DataDo && pozycja.DataZwrotu >= DataOd)
+                select new
+                {
+                    Imie = pozycja.Czytelnicy.Imie,
+                    Nazwisko = pozycja.Czytelnicy.Nazwisko,
+                    DataWypozyczenia = pozycja.DataWypozyczenia,
+                    DataZwrotu = pozycja.DataZwrotu
+                }
+            ).ToList(); // Pobranie danych do pamięci
+
+            return wyniki.Select(w =>
+                $"{w.Imie} {w.Nazwisko}, Wypożyczono: {w.DataWypozyczenia:d}, Zwrot: {(w.DataZwrotu.HasValue ? w.DataZwrotu.Value.ToString("d") : "Nie zwrócono")}"
             ).ToList();
         }
         #endregion
