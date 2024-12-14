@@ -22,25 +22,56 @@ namespace MVVMFirma.ViewModels
         {
             base.DisplayName = "Raport Wypożyczeń";
             db = new BibliotekaEntities();
+            DataOd = DateTime.Now;
+            DataDo = DateTime.Now;
         }
         #endregion
 
         #region Pola
         //dla każdego pola istotnego dla obliczeń tworzymy pole i właściwość
 
-        private List<string> _DostepneEgzemplarze;
-        public List<string> DostepneEgzemplarze
+        private List<string> _RaportWypozyczen;
+        public List<string> RaportWypozyczen
         {
-            get { return _DostepneEgzemplarze; }
+            get { return _RaportWypozyczen; }
             set
             {
-                if (_DostepneEgzemplarze != value)
+                if (_RaportWypozyczen != value)
                 {
-                    _DostepneEgzemplarze = value;
-                    OnPropertyChanged(() => DostepneEgzemplarze);
+                    _RaportWypozyczen = value;
+                    OnPropertyChanged(() => RaportWypozyczen);
                 }
             }
         }
+
+        private DateTime _DataOd;
+        public DateTime DataOd
+        {
+            get { return _DataOd; }
+            set
+            {
+                if (_DataOd != value)
+                {
+                    _DataOd = value;
+                    OnPropertyChanged(() => DataOd);
+                }
+            }
+        }
+
+        private DateTime _DataDo;
+        public DateTime DataDo
+        {
+            get { return _DataDo; }
+            set
+            {
+                if (_DataDo != value)
+                {
+                    _DataDo = value;
+                    OnPropertyChanged(() => DataDo);
+                }
+            }
+        }
+
         private int _IdKsiazki;
         public int IdKsiazki
         {
@@ -78,15 +109,15 @@ namespace MVVMFirma.ViewModels
             {
                 if (_WykonajCommand == null)
                 {
-                    _WykonajCommand = new BaseCommand(() => wykonajDostepnoscClick());
+                    _WykonajCommand = new BaseCommand(() => wykonajRaportClick());
                 }
                 return _WykonajCommand;
             }
         }
 
-        private void wykonajDostepnoscClick()
+        private void wykonajRaportClick()
         {
-            DostepneEgzemplarze = new DostepnoscB(db).ListaDostepnych(IdKsiazki);
+            RaportWypozyczen = new RaportWypozyczenB(db).RaportWypozyczen(IdKsiazki, DataOd, DataDo);
         }
         #endregion
 
