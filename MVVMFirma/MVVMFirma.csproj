@@ -91,6 +91,7 @@
     <Compile Include="Models\BusinessLogic\AutorzyB.cs" />
     <Compile Include="Models\BusinessLogic\CzytelnicyB.cs" />
     <Compile Include="Models\BusinessLogic\DatabaseClass.cs" />
+    <Compile Include="Models\BusinessLogic\DopasujB.cs" />
     <Compile Include="Models\BusinessLogic\KsiazkaB.cs" />
     <Compile Include="Models\BusinessLogic\DostepnoscB.cs" />
     <Compile Include="Models\BusinessLogic\RaportWypozyczenB.cs" />
@@ -176,6 +177,7 @@
     </Compile>
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\CommandViewModel.cs" />
+    <Compile Include="ViewModels\DopasujViewModel.cs" />
     <Compile Include="ViewModels\DostepnoscViewModel.cs" />
     <Compile Include="ViewModels\JedenViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
@@ -323,6 +325,9 @@
     </Compile>
     <Compile Include="Views\WszystkieZgloszeniaView.xaml.cs">
       <DependentUpon>WszystkieZgloszeniaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WyszukiwanieKsiazki.xaml.cs">
+      <DependentUpon>WyszukiwanieKsiazki.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -508,6 +513,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\WszystkieZgloszeniaView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WyszukiwanieKsiazki.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

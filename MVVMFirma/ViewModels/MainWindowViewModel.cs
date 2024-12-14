@@ -155,6 +155,9 @@ namespace MVVMFirma.ViewModels
                 new CommandViewModel(
                     "Raport Wypożyczeń",
                     new BaseCommand(() => this.ShowAll(new RaportWypozyczenViewModel()))),
+                new CommandViewModel(
+                    "Wyszkiwanie książki",
+                    new BaseCommand(() => this.ShowAll(new DopasujViewModel()))),
             };
         }
         #endregion
