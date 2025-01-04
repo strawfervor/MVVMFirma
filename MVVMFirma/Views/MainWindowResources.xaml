@@ -53,6 +53,7 @@
     </DataTemplate>
     
     
+
     <DataTemplate DataType="{x:Type vm:RaportWypozyczenViewModel}">
         <vw:RaportWypozyczenView/>
     </DataTemplate>
@@ -128,6 +129,25 @@
     <DataTemplate DataType="{x:Type vm:NowyUzytkownikSystemuViewModel}">
         <vw:NowyUzytkownikSystemuView/>
     </DataTemplate>
+
+    <Style TargetType="TextBox">
+        <Setter Property="Validation.ErrorTemplate">
+            <Setter.Value>
+                <ControlTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <AdornedElementPlaceholder x:Name="textBox"/>
+                        <ItemsControl Margin="10 0 0 0" ItemsSource="{Binding}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding ErrorContent}" Foreground="Red"/>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
 
     <Style x:Key="MainHCCStyle" TargetType="{x:Type HeaderedContentControl}">

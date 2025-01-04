@@ -175,6 +175,7 @@
     <Compile Include="Models\Entities\Zgloszenia.cs">
       <DependentUpon>ModelBiblioteka.tt</DependentUpon>
     </Compile>
+    <Compile Include="Validators\NowyAutorValidator.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\CommandViewModel.cs" />
     <Compile Include="ViewModels\DopasujViewModel.cs" />

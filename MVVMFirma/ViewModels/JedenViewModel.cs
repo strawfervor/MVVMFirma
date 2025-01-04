@@ -67,5 +67,7 @@ namespace MVVMFirma.ViewModels
             base.OnRequestClose();//zmaknięcie zakładki
         }
         #endregion
+
+        public bool IsEnabledSaveButton => true;
     }
 }
