@@ -22,13 +22,13 @@
                     ItemsSource="{Binding KsiazkiItems}" 
                     DisplayMemberPath="Value" 
                     SelectedValuePath="Key" 
-                    SelectedValue="{Binding Path=IdKsiazki, Mode=TwoWay}"/>
+                    SelectedValue="{Binding Path=IdKsiazki, Mode=TwoWay, ValidatesOnNotifyDataErrors=True}"/>
 
         <Label Grid.Column="0" Grid.Row="1" Margin="0,8,0,8" Content="Numer egzemplarza"/>
-        <TextBox Grid.Column="1" Grid.Row="1" Margin="0,8,0,8" Text="{Binding Path=NumerWewnetrznyEgzemplarzu, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Column="1" Grid.Row="1" Margin="0,8,0,8" Text="{Binding Path=NumerWewnetrznyEgzemplarzu, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True}"/>
 
         <Label Grid.Column="0" Grid.Row="2" Margin="0,8,0,8" Content="Stan"/>
-        <TextBox Grid.Column="1" Grid.Row="2" Margin="0,8,0,8" Text="{Binding Path=Stan, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Column="1" Grid.Row="2" Margin="0,8,0,8" Text="{Binding Path=Stan, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True}"/>
 
     </Grid>
 </local:JedenViewBase>
