@@ -19,6 +19,35 @@ namespace MVVMFirma.ViewModels
 
         #endregion
 
+        #region SortAndFind
+
+        //tu decydujemy po czym sortować
+
+        public override List<string> GetComboboxSortList()
+        {
+            //return new List<string> { "Ulica", "Numer domu", "Numer mieszkania", "Kod pocztowy", "Miasto" };
+            return null;
+        }
+
+        //jak sortować
+        public override void Sort()
+        {
+        }
+
+        //tu decydujemy po czym szuykac
+        public override List<string> GetComboboxFindList()
+        {
+            //return new List<string> { "Ulica", "Numer domu", "Numer mieszkania", "Kod pocztowy", "Miasto" };
+            return null;
+        }
+
+        //jak wyszukiwać
+        public override void Find()
+        {
+        }
+
+        #endregion
+
         #region Helpers
         //metoda load pobiera wszystkie towary z bazy danych
         public override void Load()

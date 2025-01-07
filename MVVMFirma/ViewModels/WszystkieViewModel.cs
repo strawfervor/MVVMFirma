@@ -71,6 +71,61 @@ namespace MVVMFirma.ViewModels
 
         #endregion
 
+        #region Sort And Filtr
+        //do sortowania:
+        //wynik wyboru po czym sortować zostanie zapisany w SortField.
+        public string SortField { get; set; }
+        private BaseCommand _SortCommand;//to jest komenda ktora bezdie wywoływała funkcje po nacisnieciu przycisku sortuj w filtrowaniu (generic.xaml)
+        public ICommand SortCommand
+        {
+            get
+            {
+                if (_SortCommand == null)
+                    _SortCommand = new BaseCommand(() => Sort());
+                return _SortCommand;
+            }
+        }
+        public List<string> SortComboboxItems 
+        { 
+            get
+            {
+                return GetComboboxSortList();
+            }
+        }
+
+        public abstract void Sort();
+
+        public abstract List<string> GetComboboxSortList();
+
+        //do fitrowania:
+
+
+        public string FindField { get; set; }
+        public string FindTextBox { get; set; }
+        private BaseCommand _FindCommand;//to jest komenda ktora bezdie wywoływała funkcje po nacisnieciu przycisku szukaj w wyszukiwaniu (generic.xaml)
+        public ICommand FindCommand
+        {
+            get
+            {
+                if (_FindCommand == null)
+                    _FindCommand = new BaseCommand(() => Find());
+                return _FindCommand;
+            }
+        }
+        public List<string> FindComboboxItems
+        {
+            get
+            {
+                return GetComboboxFindList();
+            }
+        }
+
+        public abstract void Find();
+
+        public abstract List<string> GetComboboxFindList();
+
+        #endregion
+
         #region Helpers
         public abstract void Load();
 
@@ -82,5 +137,6 @@ namespace MVVMFirma.ViewModels
             Messenger.Default.Send(DisplayName + "Add");
         }
         #endregion
+
     }
 }
