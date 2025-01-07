@@ -26,22 +26,22 @@
                     SelectedValuePath="Key" 
                     SelectedValue="{Binding Path=IdKsiazki, Mode=TwoWay}"/>
         
-        <!-- Tutaj jest kod do okna modalnego narazie używam starego sposobu z ComboBoxem
+        
         
         <Label Grid.Column="0" Grid.Row="1" Margin="0,8,0,8" Content="Imie czytelnika"/>
-        <TextBox Grid.Column="1" Grid.Row="1" Margin="0,8,0,8" IsEnabled="False" Text="{Binding Path=Nazwa, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Column="1" Grid.Row="1" Margin="0,8,0,8" IsEnabled="False" Text="{Binding Path=CzytelnikImie, UpdateSourceTrigger=PropertyChanged}"/>
         <Button Grid.Column="2" Grid.Row="1" Margin="10,8,10,8" Content="..." Command="{Binding ShowCzytelnicy}"/>
 
         <Label Grid.Column="0" Grid.Row="2" Margin="0,8,0,8" Content="Nazwisko czytelnika"/>
-        <TextBox Grid.Column="1" Grid.Row="2" Margin="0,8,0,8" IsEnabled="False" Text="{Binding Path=Nazwa, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Column="1" Grid.Row="2" Margin="0,8,0,8" IsEnabled="False" Text="{Binding Path=CzytelnikNazwisko, UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="3" Margin="0,8,0,8" Content="Data wypożyczenia"/>
         <DatePicker Grid.Column="1" Grid.Row="3" Margin="0,8,0,8" SelectedDate="{Binding Path=DataWypozyczenia, UpdateSourceTrigger=PropertyChanged}"/>
         
         <Label Grid.Column="0" Grid.Row="4" Margin="0,8,0,8" Content="Data zwrotu"/>
         <DatePicker Grid.Column="1" Grid.Row="4" Margin="0,8,0,8" SelectedDate="{Binding Path=DataZwrotu, UpdateSourceTrigger=PropertyChanged}"/>
-        Przy ukończeniu dodawania okna modalnego trzeba będzie wszystko usunąć, lub zakomentować (wszystko ponizej...)
-        -->
+
+        <!-- Tutaj jest kod do okna modalnego narazie używam starego sposobu z ComboBoxem
         <Label Grid.Column="0" Grid.Row="1" Margin="0,8,0,8" Content="Czytelnik"/>
         <ComboBox Grid.Column="1" Grid.Row="1" Margin="0,8,0,8"
                     ItemsSource="{Binding CzytelnicyItems}" 
@@ -54,5 +54,7 @@
 
         <Label Grid.Column="0" Grid.Row="3" Margin="0,8,0,8" Content="Data zwrotu"/>
         <DatePicker Grid.Column="1" Grid.Row="3" Margin="0,8,0,8" SelectedDate="{Binding Path=DataZwrotu, UpdateSourceTrigger=PropertyChanged}"/>
+                Przy ukończeniu dodawania okna modalnego trzeba będzie wszystko usunąć, lub zakomentować (wszystko ponizej...)
+        -->
     </Grid>
 </local:JedenViewBase>

@@ -1,4 +1,5 @@
-﻿using MVVMFirma.Helper;
+﻿using GalaSoft.MvvmLight.Messaging;
+using MVVMFirma.Helper;
 using MVVMFirma.Models.Entities;
 using MVVMFirma.Models.EntitiesForView;
 using System;
@@ -18,6 +19,27 @@ namespace MVVMFirma.ViewModels
         public WszyswcyCzytelnicyViewModel()
             : base("Czytelnicy")
         {
+        }
+
+        #endregion
+
+        #region Properties
+
+        private CzytelnikForAllView _WybranyCzytelnik;
+        //do tego propertisa zostanie przypisany czytelnik kliknięty z listy czytelników.
+        public CzytelnikForAllView WybranyCzytelnik
+        {
+            get
+            {
+                return _WybranyCzytelnik;
+            }
+            set
+            {
+                _WybranyCzytelnik = value;
+                Messenger.Default.Send(_WybranyCzytelnik);
+                //messengerem wysyłamy wybranego kontrahenta do okna z fakturą, a następnie zamykamy okno z listą czytelników (poniżej)
+                OnRequestClose();
+            }
         }
 
         #endregion

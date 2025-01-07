@@ -19,6 +19,8 @@ namespace MVVMFirma.ViewModels
                         :base("Dodaj wypożyczenie")
                     {
                         item = new Wypozyczenia();
+                        //to jest messenger, który oczekuje na czytelnika, z widoku ze wszystkim czytelnikami, jak go złapie to wywoła metodę getWybranyCzytelnik;
+                        Messenger.Default.Register<CzytelnikForAllView>(this, getWybranyCzytelnik);
                     }
         #endregion
 
@@ -71,6 +73,10 @@ namespace MVVMFirma.ViewModels
             }
         }
 
+        public string CzytelnikImie { get; set; }
+
+        public string CzytelnikNazwisko { get; set; }
+
         public DateTime? DataWypozyczenia
         {
             get
@@ -120,6 +126,14 @@ namespace MVVMFirma.ViewModels
         #endregion
 
         #region Helpers
+
+        //to jest funkcja, która wywoła się po przesłaniu kontrahenta z okna wszyscy kontrahenci.
+        private void getWybranyCzytelnik(CzytelnikForAllView czytelnik)
+        {
+                IdCzytelnika = czytelnik.IdCzytelnika;
+                CzytelnikImie = czytelnik.Imie;
+                CzytelnikNazwisko = czytelnik.Nazwisko;
+        }
         public override void Save()
         {
             bibliotekaEntites.Wypozyczenia.Add(item);//dodaje wypozyczenie do lokalnej kolekcji
