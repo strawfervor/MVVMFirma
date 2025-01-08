@@ -25,25 +25,63 @@ namespace MVVMFirma.ViewModels
 
         public override List<string> GetComboboxSortList()
         {
-            //return new List<string> { "Ulica", "Numer domu", "Numer mieszkania", "Kod pocztowy", "Miasto" };
-            return null;
+            return new List<string> { "Imie", "Nazwisko", "Nazwisko i imie", "Data urodzenia", "Kraj pochodzenia" };
         }
 
         //jak sortować
         public override void Sort()
         {
+            if (SortField == "Imie")
+                List = new ObservableCollection<Autorzy>
+                    (
+                       bibliotekaEntities.Autorzy.OrderBy(x => x.Imie).ToList()
+                    );
+            else if (SortField == "Nazwisko")
+                List = new ObservableCollection<Autorzy>
+                    (
+                       bibliotekaEntities.Autorzy.OrderBy(x => x.Nazwisko).ToList()
+                    );
+            else if (SortField == "Data urodzenia")
+                List = new ObservableCollection<Autorzy>
+                    (
+                       bibliotekaEntities.Autorzy.OrderBy(x => x.DataUrodzenia).ToList()
+                    );
+            else if (SortField == "Kraj pochodzenia")
+                List = new ObservableCollection<Autorzy>
+                    (
+                       bibliotekaEntities.Autorzy.OrderBy(x => x.KrajPochodzenia).ToList()
+                    );
+            else if (SortField == "Nazwisko i imie")
+                List = new ObservableCollection<Autorzy>
+                    (
+                       bibliotekaEntities.Autorzy.OrderBy(x => x.Nazwisko).OrderBy(x => x.Imie).ToList()
+                    );
         }
 
         //tu decydujemy po czym szuykac
         public override List<string> GetComboboxFindList()
         {
-            //return new List<string> { "Ulica", "Numer domu", "Numer mieszkania", "Kod pocztowy", "Miasto" };
-            return null;
+            return new List<string> { "Imie", "Nazwisko", "Kraj pochodzenia" };
         }
 
         //jak wyszukiwać
         public override void Find()
         {
+            if (FindField == "Imie")
+                List = new ObservableCollection<Autorzy>
+                    (
+                       bibliotekaEntities.Autorzy.Where(x => x.Imie.Contains(FindTextBox)).ToList()
+                    );
+            else if (FindField == "Nazwisko")
+                List = new ObservableCollection<Autorzy>
+                    (
+                       bibliotekaEntities.Autorzy.Where(x => x.Nazwisko.Contains(FindTextBox)).ToList()
+                    );
+            else if (FindField == "Kraj pochodzenia")
+                List = new ObservableCollection<Autorzy>
+                    (
+                       bibliotekaEntities.Autorzy.Where(x => x.KrajPochodzenia.Contains(FindTextBox)).ToList()
+                    );
         }
 
         #endregion

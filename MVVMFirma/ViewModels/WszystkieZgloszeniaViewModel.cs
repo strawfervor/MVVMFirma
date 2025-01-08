@@ -26,25 +26,42 @@ namespace MVVMFirma.ViewModels
 
         public override List<string> GetComboboxSortList()
         {
-            //return new List<string> { "Ulica", "Numer domu", "Numer mieszkania", "Kod pocztowy", "Miasto" };
-            return null;
+            return new List<string> { "Nazwisko czytelnika", "Data zgłoszenia" };
         }
 
         //jak sortować
         public override void Sort()
         {
+            if (SortField == "Nazwisko czytelnika")
+                List = new ObservableCollection<ZgloszenieForAllView>(List.OrderBy(x => x.CzytelnikNazwisko));
+            if (SortField == "Data zgłoszenia")
+                List = new ObservableCollection<ZgloszenieForAllView>(List.OrderBy(x => x.DataZgloszenia));
         }
 
         //tu decydujemy po czym szuykac
         public override List<string> GetComboboxFindList()
         {
-            //return new List<string> { "Ulica", "Numer domu", "Numer mieszkania", "Kod pocztowy", "Miasto" };
-            return null;
+            return new List<string> { "Imie czytelnika", "Nazwisko czytelnika", "Opis" };
         }
 
         //jak wyszukiwać
         public override void Find()
         {
+            if (FindField == "Opis")
+            {
+                List = new ObservableCollection<ZgloszenieForAllView>(
+                    List.Where(x => x.Opis != null && x.Opis.ToLower().Contains(FindTextBox.ToLower())));
+            }
+            if (FindField == "Nazwisko czytelnika")
+            {
+                List = new ObservableCollection<ZgloszenieForAllView>(
+                    List.Where(x => x.CzytelnikNazwisko != null && x.CzytelnikNazwisko.ToLower().Contains(FindTextBox.ToLower())));
+            }
+            if (FindField == "Imie czytelnika")
+            {
+                List = new ObservableCollection<ZgloszenieForAllView>(
+                    List.Where(x => x.CzytelnikImie != null && x.CzytelnikImie.ToLower().Contains(FindTextBox.ToLower())));
+            }
         }
 
         #endregion

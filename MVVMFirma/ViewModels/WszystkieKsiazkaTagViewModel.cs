@@ -26,25 +26,37 @@ namespace MVVMFirma.ViewModels
 
         public override List<string> GetComboboxSortList()
         {
-            //return new List<string> { "Ulica", "Numer domu", "Numer mieszkania", "Kod pocztowy", "Miasto" };
-            return null;
+            return new List<string> { "Tytuł książki", "Nazwa tagu" };
         }
 
         //jak sortować
         public override void Sort()
         {
+            if (SortField == "Tytuł książki")
+                List = new ObservableCollection<KsiazkaTagForAllView>(List.OrderBy(x => x.KsiazkaTytul));
+            if (SortField == "Nazwa tagu")
+                List = new ObservableCollection<KsiazkaTagForAllView>(List.OrderBy(x => x.TagiTag));
         }
 
         //tu decydujemy po czym szuykac
         public override List<string> GetComboboxFindList()
         {
-            //return new List<string> { "Ulica", "Numer domu", "Numer mieszkania", "Kod pocztowy", "Miasto" };
-            return null;
+            return new List<string> { "Tytuł książki", "Nazwa tagu" };
         }
 
         //jak wyszukiwać
         public override void Find()
         {
+            if (FindField == "Tytuł książki")
+            {
+                List = new ObservableCollection<KsiazkaTagForAllView>(
+                    List.Where(x => x.KsiazkaTytul != null && x.KsiazkaTytul.ToLower().Contains(FindTextBox.ToLower())));
+            }
+            if (FindField == "Nazwa tagu")
+            {
+                List = new ObservableCollection<KsiazkaTagForAllView>(
+                    List.Where(x => x.TagiTag != null && x.TagiTag.ToLower().Contains(FindTextBox.ToLower())));
+            }
         }
 
         #endregion

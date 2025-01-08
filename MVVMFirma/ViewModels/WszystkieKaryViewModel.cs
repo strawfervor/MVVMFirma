@@ -27,24 +27,36 @@ namespace MVVMFirma.ViewModels
         public override List<string> GetComboboxSortList()
         {
             //po dacie naliczenia i kwocie
-            return new List<string> { "Czytelnik", "Data naliczenia", "Kwota" };
+            return new List<string> { "Data naliczenia", "Kwota" };
         }
 
         //jak sortować
         public override void Sort()
         {
+            if (SortField == "Data naliczenia")
+                List = new ObservableCollection<KaraForAllView>(List.OrderBy(x => x.DataNaliczenia));
+            if (SortField == "Kwota")
+                List = new ObservableCollection<KaraForAllView>(List.OrderBy(x => x.Kwota));
         }
 
         //tu decydujemy po czym szuykac
         public override List<string> GetComboboxFindList()
         {
-            //return new List<string> { "Ulica", "Numer domu", "Numer mieszkania", "Kod pocztowy", "Miasto" };
-            return null;
+            return new List<string> { "Nazwisko czytelnika", "Imie czytelnika", "Opis" };
         }
 
         //jak wyszukiwać
         public override void Find()
         {
+            if (FindField == "Nazwisko czytelnika")
+                List = new ObservableCollection<KaraForAllView>(List.Where(x => x.CzytelnikNazwisko != null && x.CzytelnikNazwisko.Contains(FindTextBox)));
+            if (FindField == "Imie czytelnika")
+                List = new ObservableCollection<KaraForAllView>(List.Where(x => x.CzytelnikImie != null && x.CzytelnikImie.Contains(FindTextBox)));
+            if (FindField == "Opis")
+            {
+                List = new ObservableCollection<KaraForAllView>(
+                    List.Where(x => x.Opis != null && x.Opis.ToLower().Contains(FindTextBox.ToLower())));
+            }
         }
 
         #endregion

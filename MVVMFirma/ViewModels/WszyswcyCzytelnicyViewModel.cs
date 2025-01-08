@@ -29,25 +29,58 @@ namespace MVVMFirma.ViewModels
 
         public override List<string> GetComboboxSortList()
         {
-            //return new List<string> { "Ulica", "Numer domu", "Numer mieszkania", "Kod pocztowy", "Miasto" };
-            return null;
+            return new List<string> { "Imie", "Nazwisko", "Ulica", "Miejscowość", "Rodzaj członkostwa" };
         }
 
         //jak sortować
         public override void Sort()
         {
+            if (SortField == "Imie")
+                List = new ObservableCollection<CzytelnikForAllView>(List.OrderBy(x => x.Imie));
+            if (SortField == "Nazwisko")
+                List = new ObservableCollection<CzytelnikForAllView>(List.OrderBy(x => x.Nazwisko));
+            if (SortField == "Ulica")
+                List = new ObservableCollection<CzytelnikForAllView>(List.OrderBy(x => x.AdresUlica));
+            if (SortField == "Miejscowość")
+                List = new ObservableCollection<CzytelnikForAllView>(List.OrderBy(x => x.AdresMiejscowosc));
+            if (SortField == "Rodzaj członkostwa")
+                List = new ObservableCollection<CzytelnikForAllView>(List.OrderBy(x => x.RodzajeCzlonkostwaNazwaCzlonkowstwa));
         }
 
         //tu decydujemy po czym szuykac
         public override List<string> GetComboboxFindList()
         {
-            //return new List<string> { "Ulica", "Numer domu", "Numer mieszkania", "Kod pocztowy", "Miasto" };
-            return null;
+            return new List<string> { "Imie", "Nazwisko", "Ulica", "Miejscowość", "Rodzaj członkostwa" };
         }
 
         //jak wyszukiwać
         public override void Find()
         {
+            if (FindField == "Imie")
+            {
+                List = new ObservableCollection<CzytelnikForAllView>(
+                    List.Where(x => x.Imie != null && x.Imie.ToLower().Contains(FindTextBox.ToLower())));
+            }
+            if (FindField == "Nazwisko")
+            {
+                List = new ObservableCollection<CzytelnikForAllView>(
+                    List.Where(x => x.Nazwisko != null && x.Nazwisko.ToLower().Contains(FindTextBox.ToLower())));
+            }
+            if (FindField == "Ulica")
+            {
+                List = new ObservableCollection<CzytelnikForAllView>(
+                    List.Where(x => x.AdresUlica != null && x.AdresUlica.ToLower().Contains(FindTextBox.ToLower())));
+            }
+            if (FindField == "Miejscowość")
+            {
+                List = new ObservableCollection<CzytelnikForAllView>(
+                    List.Where(x => x.AdresMiejscowosc != null && x.AdresMiejscowosc.ToLower().Contains(FindTextBox.ToLower())));
+            }
+            if (FindField == "Rodzaj członkostwa")
+            {
+                List = new ObservableCollection<CzytelnikForAllView>(
+                    List.Where(x => x.RodzajeCzlonkostwaNazwaCzlonkowstwa != null && x.RodzajeCzlonkostwaNazwaCzlonkowstwa.ToLower().Contains(FindTextBox.ToLower())));
+            }
         }
 
         #endregion

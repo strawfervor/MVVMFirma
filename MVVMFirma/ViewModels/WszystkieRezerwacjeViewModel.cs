@@ -26,25 +26,46 @@ namespace MVVMFirma.ViewModels
 
         public override List<string> GetComboboxSortList()
         {
-            //return new List<string> { "Ulica", "Numer domu", "Numer mieszkania", "Kod pocztowy", "Miasto" };
-            return null;
+            return new List<string> { "Tytuł", "Nazwisko czytelnika", "Data rezerwacji", "Data odbioru książki" };
         }
 
         //jak sortować
         public override void Sort()
         {
+            if (SortField == "Tytuł")
+                List = new ObservableCollection<RezerwacjaForAllView>(List.OrderBy(x => x.KsiazkaTytul));
+            if (SortField == "Nazwisko czytelnika")
+                List = new ObservableCollection<RezerwacjaForAllView>(List.OrderBy(x => x.CzytelnikNazwisko));
+            if (SortField == "Data rezerwacji")
+                List = new ObservableCollection<RezerwacjaForAllView>(List.OrderBy(x => x.DataRezerwacji));
+            if (SortField == "Data odbioru książki")
+                List = new ObservableCollection<RezerwacjaForAllView>(List.OrderBy(x => x.DataOdbioru));
         }
 
         //tu decydujemy po czym szuykac
         public override List<string> GetComboboxFindList()
         {
-            //return new List<string> { "Ulica", "Numer domu", "Numer mieszkania", "Kod pocztowy", "Miasto" };
-            return null;
+            return new List<string> { "Tytuł", "Nazwisko czytelnika", "Imie czytelnika" };
         }
 
         //jak wyszukiwać
         public override void Find()
         {
+            if (FindField == "Tytuł")
+            {
+                List = new ObservableCollection<RezerwacjaForAllView>(
+                    List.Where(x => x.KsiazkaTytul != null && x.KsiazkaTytul.ToLower().Contains(FindTextBox.ToLower())));
+            }
+            if (FindField == "Nazwisko czytelnika")
+            {
+                List = new ObservableCollection<RezerwacjaForAllView>(
+                    List.Where(x => x.CzytelnikNazwisko != null && x.CzytelnikNazwisko.ToLower().Contains(FindTextBox.ToLower())));
+            }
+            if (FindField == "Imie czytelnika")
+            {
+                List = new ObservableCollection<RezerwacjaForAllView>(
+                    List.Where(x => x.CzytelnikImie != null && x.CzytelnikImie.ToLower().Contains(FindTextBox.ToLower())));
+            }
         }
 
         #endregion

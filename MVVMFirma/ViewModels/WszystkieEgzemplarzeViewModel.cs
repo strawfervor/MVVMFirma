@@ -22,29 +22,35 @@ namespace MVVMFirma.ViewModels
 
         #region SortAndFind
 
-        //tu decydujemy po czym sortować
-
         public override List<string> GetComboboxSortList()
         {
-            //return new List<string> { "Ulica", "Numer domu", "Numer mieszkania", "Kod pocztowy", "Miasto" };
-            return null;
+            return new List<string> { "Stan", "Numer wewnętrzny", "Tytuł" };
         }
 
         //jak sortować
         public override void Sort()
         {
+            if (SortField == "Stan")
+                List = new ObservableCollection<EgzemplarzForAllView>(List.OrderBy(x => x.Stan));
+            if (SortField == "Numer wewnętrzny")
+                List = new ObservableCollection<EgzemplarzForAllView>(List.OrderBy(x => x.NumerWewnetrzny));
+            if (SortField == "Tytuł")
+                List = new ObservableCollection<EgzemplarzForAllView>(List.OrderBy(x => x.KsiazkiTytul));
         }
 
         //tu decydujemy po czym szuykac
         public override List<string> GetComboboxFindList()
         {
-            //return new List<string> { "Ulica", "Numer domu", "Numer mieszkania", "Kod pocztowy", "Miasto" };
-            return null;
+            return new List<string> { "Stan", "Numer wewnętrzny" };
         }
 
         //jak wyszukiwać
         public override void Find()
         {
+            if(FindField == "Stan")
+                List = new ObservableCollection<EgzemplarzForAllView>(List.Where(x => x.Stan != null && x.Stan.Contains(FindTextBox)));
+            if (FindField == "Numer wewnętrzny")
+                List = new ObservableCollection<EgzemplarzForAllView>(List.Where(x => x.NumerWewnetrzny != null && x.NumerWewnetrzny.Contains(FindTextBox)));
         }
 
         #endregion

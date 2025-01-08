@@ -27,25 +27,44 @@ namespace MVVMFirma.ViewModels
 
         public override List<string> GetComboboxSortList()
         {
-            //return new List<string> { "Ulica", "Numer domu", "Numer mieszkania", "Kod pocztowy", "Miasto" };
-            return null;
+            return new List<string> { "Nazwa konkursu", "Data rozpoczęcia", "Data zakończenia", "Status" };
         }
 
         //jak sortować
         public override void Sort()
         {
+            if (SortField == "Nazwa konkursu")
+                List = new ObservableCollection<KonkursyForAllView>(List.OrderBy(x => x.NazwaKonkursu));
+            if (SortField == "Data rozpoczęcia")
+                List = new ObservableCollection<KonkursyForAllView>(List.OrderBy(x => x.DataRozpoczecia));
+            if (SortField == "Data zakończenia")
+                List = new ObservableCollection<KonkursyForAllView>(List.OrderBy(x => x.DataZakonczenia));
+            if (SortField == "Status")
+                List = new ObservableCollection<KonkursyForAllView>(List.OrderBy(x => x.Status));
         }
 
         //tu decydujemy po czym szuykac
         public override List<string> GetComboboxFindList()
         {
-            //return new List<string> { "Ulica", "Numer domu", "Numer mieszkania", "Kod pocztowy", "Miasto" };
-            return null;
+            return new List<string> { "Opis", "Status", "Nazwisko zwycięzcy", "Imie zwycięzcy", "Nazwa konkursu" };
         }
 
         //jak wyszukiwać
         public override void Find()
         {
+            if (FindField == "Nazwisko zwycięzcy")
+                List = new ObservableCollection<KonkursyForAllView>(List.Where(x => x.NazwiskoZwyciezcy != null && x.NazwiskoZwyciezcy.Contains(FindTextBox)));
+            if (FindField == "Imie zwycięzcy")
+                List = new ObservableCollection<KonkursyForAllView>(List.Where(x => x.ImieZwyciezcy != null && x.ImieZwyciezcy.Contains(FindTextBox)));
+            if (FindField == "Nazwa konkursu")
+                List = new ObservableCollection<KonkursyForAllView>(List.Where(x => x.NazwiskoZwyciezcy != null && x.NazwaKonkursu.Contains(FindTextBox)));
+            if (FindField == "Status")
+                List = new ObservableCollection<KonkursyForAllView>(List.Where(x => x.Status != null && x.Status.Contains(FindTextBox)));
+            if (FindField == "Opis")
+            {
+                List = new ObservableCollection<KonkursyForAllView>(
+                    List.Where(x => x.OpisKonkursu != null && x.OpisKonkursu.ToLower().Contains(FindTextBox.ToLower())));
+            }
         }
 
         #endregion
