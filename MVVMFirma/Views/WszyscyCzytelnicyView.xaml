@@ -20,5 +20,12 @@
                 <DataGridTextColumn Header="Maksymalna ilość wypożyczonych książek" Binding="{Binding MaksWypozyczen}"/>
             </DataGrid.Columns>
         </DataGrid>
+        <Button Content="Wybierz/Zamknij" 
+                Width="100" 
+                Height="30" 
+                Command="{Binding CancelandCloseCommand}" 
+                VerticalAlignment="Bottom" 
+                HorizontalAlignment="Right" 
+                Margin="10"/>
     </Grid>
 </local:WszystkieViewBase>

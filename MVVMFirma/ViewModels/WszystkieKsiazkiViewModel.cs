@@ -1,4 +1,6 @@
-﻿using MVVMFirma.Models.Entities;
+﻿using GalaSoft.MvvmLight.Messaging;
+using MVVMFirma.Helper;
+using MVVMFirma.Models.Entities;
 using MVVMFirma.Models.EntitiesForView;
 using System;
 using System.Collections.Generic;
@@ -6,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace MVVMFirma.ViewModels
 {
@@ -83,6 +86,26 @@ namespace MVVMFirma.ViewModels
 
         #endregion
 
+        #region Properties
+
+        private KsiazkaForAllView _WybranaKsiazka;
+        //do tego propertisa zostanie przypisany czytelnik kliknięty z listy czytelników.
+        public KsiazkaForAllView WybranaKsiazka
+        {
+            get
+            {
+                return _WybranaKsiazka;
+            }
+            set
+            {
+                _WybranaKsiazka = value;
+                Messenger.Default.Send(_WybranaKsiazka);
+                //messengerem wysyłamy wybranego kontrahenta do okna z fakturą, a następnie zamykamy okno z listą czytelników (poniżej)
+            }
+        }
+
+        #endregion
+
         #region Helpers
         public override void Load()
         {
@@ -104,6 +127,25 @@ namespace MVVMFirma.ViewModels
                        RodzajLiterckiNazwa = ksiazka.RodzajLiteracki1.NazwaRodzaju,
                    }
                 );
+        }
+        #endregion
+
+        #region Guzik do zamykania
+
+        private BaseCommand _CancelandCloseCommand;
+        public ICommand CancelandCloseCommand
+        {
+            get
+            {
+                if (_CancelandCloseCommand == null)
+                    _CancelandCloseCommand = new BaseCommand(() => CancelandClose());
+                return _CancelandCloseCommand;
+            }
+        }
+
+        public void CancelandClose()
+        {
+            base.OnRequestClose();//zmaknięcie zakładki
         }
         #endregion
     }

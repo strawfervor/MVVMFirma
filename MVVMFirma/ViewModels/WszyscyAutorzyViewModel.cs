@@ -58,7 +58,7 @@ namespace MVVMFirma.ViewModels
                     );
         }
 
-        //tu decydujemy po czym szuykac
+        //tu decydujemy po czym szukac
         public override List<string> GetComboboxFindList()
         {
             return new List<string> { "Imie", "Nazwisko", "Kraj pochodzenia" };

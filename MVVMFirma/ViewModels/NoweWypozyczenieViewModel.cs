@@ -21,7 +21,8 @@ namespace MVVMFirma.ViewModels
                         item = new Wypozyczenia();
                         //to jest messenger, który oczekuje na czytelnika, z widoku ze wszystkim czytelnikami, jak go złapie to wywoła metodę getWybranyCzytelnik;
                         Messenger.Default.Register<CzytelnikForAllView>(this, getWybranyCzytelnik);
-                    }
+                        Messenger.Default.Register<KsiazkaForAllView>(this, getWybranaKsiazka);
+        }
         #endregion
 
         #region Commands
@@ -37,9 +38,25 @@ namespace MVVMFirma.ViewModels
             }
         }
 
+        private BaseCommand _ShowKsiazki;//to jest komenda ktora bezdie wywoływała funkcje showCzytelnicy ktora bedzie wyświetlała wszystkich czytelnikow i bedzie uruchamiana przez przycisk z  ...
+        public ICommand ShowKsiazki
+        {
+            get
+            {
+                if (_ShowKsiazki == null)
+                    _ShowKsiazki = new BaseCommand(() => showKsiazki());
+                return _ShowKsiazki;
+            }
+        }
+
         private void showCzytelnicy()
         {
             Messenger.Default.Send("CzytelnicyAll");
+        }
+
+        private void showKsiazki()
+        {
+            Messenger.Default.Send("KsiazkiAll");
         }
 
         #endregion
@@ -76,6 +93,8 @@ namespace MVVMFirma.ViewModels
         public string CzytelnikImie { get; set; }
 
         public string CzytelnikNazwisko { get; set; }
+
+        public string KsiazkaTytul { get; set; }
 
         public DateTime? DataWypozyczenia
         {
@@ -134,6 +153,13 @@ namespace MVVMFirma.ViewModels
                 CzytelnikImie = czytelnik.Imie;
                 CzytelnikNazwisko = czytelnik.Nazwisko;
         }
+
+        private void getWybranaKsiazka(KsiazkaForAllView ksiazka)
+        {
+            IdKsiazki = ksiazka.IdKsiazki;
+            KsiazkaTytul = ksiazka.Tytul;
+        }
+
         public override void Save()
         {
             bibliotekaEntites.Wypozyczenia.Add(item);//dodaje wypozyczenie do lokalnej kolekcji

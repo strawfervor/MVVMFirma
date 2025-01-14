@@ -10,6 +10,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150"/>
             <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="50"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
@@ -25,12 +26,16 @@
         <Label Grid.Column="0" Grid.Row="1" Margin="0,8,0,8" Content="Nazwisko"/>
         <TextBox Grid.Column="1" Grid.Row="1" Margin="0,8,0,8" Text="{Binding Path=Nazwisko, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <Label Grid.Column="0" Grid.Row="2" Margin="0,8,0,8" Content="Adres"/>
+        <!--<Label Grid.Column="0" Grid.Row="2" Margin="0,8,0,8" Content="Adres"/>
         <ComboBox Grid.Column="1" Grid.Row="2" Margin="0,8,0,8"
                     ItemsSource="{Binding AdresyItems}" 
                     DisplayMemberPath="Value" 
                     SelectedValuePath="Key" 
-                    SelectedValue="{Binding Path=IdAdresu, Mode=TwoWay}"/>
+                    SelectedValue="{Binding Path=IdAdresu, Mode=TwoWay}"/>-->
+
+        <Label Grid.Column="0" Grid.Row="2" Margin="0,8,0,8" Content="Adres"/>
+        <TextBox Grid.Column="1" Grid.Row="2" Margin="0,8,0,8" IsEnabled="False" Text="{Binding Path=AdresUlica, UpdateSourceTrigger=PropertyChanged}"/>
+        <Button Grid.Column="2" Grid.Row="2" Margin="10,8,10,8" Content="..." Command="{Binding ShowAdresy}"/>
 
         <Label Grid.Column="0" Grid.Row="3" Margin="0,8,0,8" Content="Rodzaj członkostwa"/>
         <ComboBox Grid.Column="1" Grid.Row="3" Margin="0,8,0,8"

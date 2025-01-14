@@ -1,4 +1,6 @@
-﻿using MVVMFirma.Models.BusinessLogic;
+﻿using GalaSoft.MvvmLight.Messaging;
+using MVVMFirma.Helper;
+using MVVMFirma.Models.BusinessLogic;
 using MVVMFirma.Models.Entities;
 using MVVMFirma.Models.EntitiesForView;
 using System;
@@ -6,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace MVVMFirma.ViewModels
 {
@@ -16,6 +19,7 @@ namespace MVVMFirma.ViewModels
                     : base("Dodaj czytelnika")
         {
             item = new Czytelnicy();
+            Messenger.Default.Register<Adres>(this, getWybranyAdres);
         }
         #endregion
 
@@ -86,6 +90,29 @@ namespace MVVMFirma.ViewModels
                 OnPropertyChanged(() => IloscWypozyczonychKsiazek);
             }
         }
+
+        public string AdresUlica { get; set; }
+        #endregion
+
+        #region Commands
+
+        private BaseCommand _ShowAdresy;//to jest komenda ktora bezdie wywoływała funkcje showCzytelnicy ktora bedzie wyświetlała wszystkich czytelnikow i bedzie uruchamiana przez przycisk z  ...
+        public ICommand ShowAdresy
+        {
+            get
+            {
+                if (_ShowAdresy == null)
+                    _ShowAdresy = new BaseCommand(() => showAdresy());
+                return _ShowAdresy;
+            }
+        }
+
+        private void showAdresy()
+        {
+            Messenger.Default.Send("AdresyAll");
+        }
+
+
         #endregion
 
 
@@ -114,6 +141,12 @@ namespace MVVMFirma.ViewModels
         {
             bibliotekaEntites.Czytelnicy.Add(item);//dodaje wypozyczenie do lokalnej kolekcji
             bibliotekaEntites.SaveChanges();//zapisuje zmiany do bazy danych
+        }
+
+        private void getWybranyAdres(Adres adres)
+        {
+            IdAdresu = adres.Id;
+            AdresUlica = adres.Ulica + " ," + adres.Miejscowosc;
         }
         #endregion
     }

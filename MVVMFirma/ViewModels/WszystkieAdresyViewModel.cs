@@ -1,10 +1,14 @@
-﻿using MVVMFirma.Models.Entities;
+﻿using GalaSoft.MvvmLight.Messaging;
+using MVVMFirma.Helper;
+using MVVMFirma.Models.Entities;
+using MVVMFirma.Models.EntitiesForView;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace MVVMFirma.ViewModels
 {
@@ -15,6 +19,26 @@ namespace MVVMFirma.ViewModels
         public WszystkieAdresyViewModel()
             : base("Adresy")
         {
+        }
+
+        #endregion
+
+        #region Properties
+
+        private Adres _WybranyAdres;
+        //do tego propertisa zostanie przypisany czytelnik kliknięty z listy czytelników.
+        public Adres WybranyAdres
+        {
+            get
+            {
+                return _WybranyAdres;
+            }
+            set
+            {
+                _WybranyAdres = value;
+                Messenger.Default.Send(_WybranyAdres);
+                //messengerem wysyłamy wybranego kontrahenta do okna z fakturą, a następnie zamykamy okno z listą czytelników (poniżej)
+            }
         }
 
         #endregion
@@ -84,6 +108,25 @@ namespace MVVMFirma.ViewModels
                 (
                    bibliotekaEntities.Adres.ToList()
                 );
+        }
+        #endregion
+
+        #region Guzik do zamykania
+
+        private BaseCommand _CancelandCloseCommand;
+        public ICommand CancelandCloseCommand
+        {
+            get
+            {
+                if (_CancelandCloseCommand == null)
+                    _CancelandCloseCommand = new BaseCommand(() => CancelandClose());
+                return _CancelandCloseCommand;
+            }
+        }
+
+        public void CancelandClose()
+        {
+            base.OnRequestClose();//zmaknięcie zakładki
         }
         #endregion
     }

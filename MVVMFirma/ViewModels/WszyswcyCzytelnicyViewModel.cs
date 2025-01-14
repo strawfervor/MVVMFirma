@@ -100,7 +100,6 @@ namespace MVVMFirma.ViewModels
                 _WybranyCzytelnik = value;
                 Messenger.Default.Send(_WybranyCzytelnik);
                 //messengerem wysyłamy wybranego kontrahenta do okna z fakturą, a następnie zamykamy okno z listą czytelników (poniżej)
-                OnRequestClose();
             }
         }
 
@@ -127,6 +126,25 @@ namespace MVVMFirma.ViewModels
                        MaksWypozyczen = czytelnik.RodzajCzlonkostwa.MaxKsiazekWypozyczonych,
                    }
                 );
+        }
+        #endregion
+
+        #region Guzik do zamykania
+
+        private BaseCommand _CancelandCloseCommand;
+        public ICommand CancelandCloseCommand
+        {
+            get
+            {
+                if (_CancelandCloseCommand == null)
+                    _CancelandCloseCommand = new BaseCommand(() => CancelandClose());
+                return _CancelandCloseCommand;
+            }
+        }
+
+        public void CancelandClose()
+        {
+            base.OnRequestClose();//zmaknięcie zakładki
         }
         #endregion
     }
