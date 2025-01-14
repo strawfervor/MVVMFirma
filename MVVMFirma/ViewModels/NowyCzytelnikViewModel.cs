@@ -20,6 +20,7 @@ namespace MVVMFirma.ViewModels
         {
             item = new Czytelnicy();
             Messenger.Default.Register<Adres>(this, getWybranyAdres);
+            Messenger.Default.Register<RodzajCzlonkostwa>(this, getWybraneCzlonkostwo);
         }
         #endregion
 
@@ -92,6 +93,8 @@ namespace MVVMFirma.ViewModels
         }
 
         public string AdresUlica { get; set; }
+
+        public string NazwaRodzaju { get; set; }
         #endregion
 
         #region Commands
@@ -112,6 +115,22 @@ namespace MVVMFirma.ViewModels
             Messenger.Default.Send("AdresyAll");
         }
 
+
+        private BaseCommand _ShowCzlonkostwa;//to jest komenda ktora bezdie wywoływała funkcje showCzytelnicy ktora bedzie wyświetlała wszystkich czytelnikow i bedzie uruchamiana przez przycisk z  ...
+        public ICommand ShowCzlonkostwa
+        {
+            get
+            {
+                if (_ShowCzlonkostwa == null)
+                    _ShowCzlonkostwa = new BaseCommand(() => showCzlonkostwa());
+                return _ShowCzlonkostwa;
+            }
+        }
+
+        private void showCzlonkostwa()
+        {
+            Messenger.Default.Send("CzlonkostwaAll");
+        }
 
         #endregion
 
@@ -146,7 +165,13 @@ namespace MVVMFirma.ViewModels
         private void getWybranyAdres(Adres adres)
         {
             IdAdresu = adres.Id;
-            AdresUlica = adres.Ulica + " ," + adres.Miejscowosc;
+            AdresUlica = adres.Ulica + ", " + adres.Miejscowosc;
+        }
+
+        private void getWybraneCzlonkostwo(RodzajCzlonkostwa rodzaj)
+        {
+            IdRodzajuCzlonkowstwa = rodzaj.Id;
+            NazwaRodzaju = rodzaj.NazwaCzlonkowstwa;
         }
         #endregion
     }

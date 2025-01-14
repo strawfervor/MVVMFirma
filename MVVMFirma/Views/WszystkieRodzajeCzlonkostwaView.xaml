@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="AntiqueWhite">
-        <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding List}">
+        <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding List}" SelectedItem="{Binding Path=WybraneCzlonkostwo, Mode=TwoWay}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
                 <DataGridTextColumn Header="Nazwa Członkostwa" Binding="{Binding NazwaCzlonkowstwa}"/>
@@ -15,5 +15,12 @@
                 <DataGridTextColumn Header="Maksymalny czas wypożyczenia" Binding="{Binding MaxCzasWypozyczenia}"/>
             </DataGrid.Columns>
         </DataGrid>
+        <Button Content="Wybierz/Zamknij" 
+                Width="100" 
+                Height="30" 
+                Command="{Binding CancelandCloseCommand}" 
+                VerticalAlignment="Bottom" 
+                HorizontalAlignment="Right" 
+                Margin="10"/>
     </Grid>
 </local:WszystkieViewBase>

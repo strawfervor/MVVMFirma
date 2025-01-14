@@ -279,11 +279,15 @@ namespace MVVMFirma.ViewModels
             if (name == "CzytelnicyAdd")
                 CreateView(new NowyCzytelnikViewModel());
             if (name == "CzytelnicyAll")
-                CreateView(new WszyswcyCzytelnicyViewModel());//KsiazkiAll
+                CreateView(new WszyswcyCzytelnicyViewModel());
             if (name == "KsiazkiAll")
                 CreateView(new WszystkieKsiazkiViewModel());
             if (name == "AdresyAll")
                 CreateView(new WszystkieAdresyViewModel());
+            if (name == "CzlonkostwaAll")
+                CreateView(new WszystkieRodzajeCzlonkostwaViewModel());
+            if (name == "TagAll")
+                CreateView(new WszystkieTagiViewModel());
         }
         #endregion
     }

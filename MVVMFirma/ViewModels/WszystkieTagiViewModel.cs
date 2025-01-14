@@ -1,10 +1,13 @@
-﻿using MVVMFirma.Models.Entities;
+﻿using GalaSoft.MvvmLight.Messaging;
+using MVVMFirma.Helper;
+using MVVMFirma.Models.Entities;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace MVVMFirma.ViewModels
 {
@@ -15,6 +18,26 @@ namespace MVVMFirma.ViewModels
         public WszystkieTagiViewModel()
             : base("Tagi")
         {
+        }
+
+        #endregion
+
+        #region Properties
+
+        private Tagi _WybranyTag;
+        //do tego propertisa zostanie przypisany czytelnik kliknięty z listy czytelników.
+        public Tagi WybranyTag
+        {
+            get
+            {
+                return _WybranyTag;
+            }
+            set
+            {
+                _WybranyTag = value;
+                Messenger.Default.Send(_WybranyTag);
+                //messengerem wysyłamy wybranego kontrahenta do okna z fakturą, a następnie zamykamy okno z listą czytelników (poniżej)
+            }
         }
 
         #endregion
@@ -60,6 +83,25 @@ namespace MVVMFirma.ViewModels
                 (
                    bibliotekaEntities.Tagi.ToList()
                 );
+        }
+        #endregion
+
+        #region Guzik do zamykania
+
+        private BaseCommand _CancelandCloseCommand;
+        public ICommand CancelandCloseCommand
+        {
+            get
+            {
+                if (_CancelandCloseCommand == null)
+                    _CancelandCloseCommand = new BaseCommand(() => CancelandClose());
+                return _CancelandCloseCommand;
+            }
+        }
+
+        public void CancelandClose()
+        {
+            base.OnRequestClose();//zmaknięcie zakładki
         }
         #endregion
     }

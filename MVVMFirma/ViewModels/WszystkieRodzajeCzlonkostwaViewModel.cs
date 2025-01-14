@@ -1,4 +1,6 @@
-﻿using MVVMFirma.Models.Entities;
+﻿using GalaSoft.MvvmLight.Messaging;
+using MVVMFirma.Helper;
+using MVVMFirma.Models.Entities;
 using MVVMFirma.Models.EntitiesForView;
 using System;
 using System.Collections.Generic;
@@ -6,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace MVVMFirma.ViewModels
 {
@@ -16,6 +19,26 @@ namespace MVVMFirma.ViewModels
         public WszystkieRodzajeCzlonkostwaViewModel()
             : base("RodzajeCzlonkostwa")
         {
+        }
+
+        #endregion
+
+        #region Properties
+
+        private RodzajCzlonkostwa _WybraneCzlonkostwo;
+        //do tego propertisa zostanie przypisany czytelnik kliknięty z listy czytelników.
+        public RodzajCzlonkostwa WybraneCzlonkostwo
+        {
+            get
+            {
+                return _WybraneCzlonkostwo;
+            }
+            set
+            {
+                _WybraneCzlonkostwo = value;
+                Messenger.Default.Send(_WybraneCzlonkostwo);
+                //messengerem wysyłamy wybranego kontrahenta do okna z fakturą, a następnie zamykamy okno z listą czytelników (poniżej)
+            }
         }
 
         #endregion
@@ -65,6 +88,25 @@ namespace MVVMFirma.ViewModels
                 (
                    bibliotekaEntities.RodzajCzlonkostwa.ToList()
                 );
+        }
+        #endregion
+
+        #region Guzik do zamykania
+
+        private BaseCommand _CancelandCloseCommand;
+        public ICommand CancelandCloseCommand
+        {
+            get
+            {
+                if (_CancelandCloseCommand == null)
+                    _CancelandCloseCommand = new BaseCommand(() => CancelandClose());
+                return _CancelandCloseCommand;
+            }
+        }
+
+        public void CancelandClose()
+        {
+            base.OnRequestClose();//zmaknięcie zakładki
         }
         #endregion
     }
