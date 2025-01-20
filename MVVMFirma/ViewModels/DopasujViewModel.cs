@@ -4,6 +4,7 @@ using MVVMFirma.Models.Entities;
 using MVVMFirma.Models.EntitiesForView;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,7 +22,7 @@ namespace MVVMFirma.ViewModels
         #region Konstruktor
         public DopasujViewModel()
         {
-            base.DisplayName = "Dopasowanie książek";
+            base.DisplayName = "Zarządzanie tagami";
             db = new BibliotekaEntities();
             Rok = 1;
         }
@@ -100,6 +101,60 @@ namespace MVVMFirma.ViewModels
                 return new TagiB(db).GetTagiKeyAndValueItems();
             }
         }
+
+        //nowe pola dla dodawania tagów i doklejania tagów do książki
+        //
+        //
+
+        private string _TrescTagu;
+        public string TrescTagu
+        {
+            get { return _TrescTagu; }
+            set
+            {
+                if (_TrescTagu != value)
+                {
+                    _TrescTagu = value;
+                    OnPropertyChanged(() => TrescTagu);
+                }
+            }
+        }
+
+        private int? _IdKsiazki;
+        public int? IdKsiazki
+        {
+            get { return _IdKsiazki; }
+            set
+            {
+                if (_IdKsiazki != value)
+                {
+                    _IdKsiazki = value;
+                    OnPropertyChanged(() => IdKsiazki);
+                }
+            }
+        }
+
+        public IQueryable<KeyAndValue> KsiazkiItems
+        {
+            get
+            {
+                return new KsiazkaB(db).GetKsiazkiKeyAndValueItems();
+            }
+        }
+        //private ObservableCollection<KeyAndValue> _KsiazkiItems;
+        //public ObservableCollection<KeyAndValue> KsiazkiItems
+        //{
+        //    get { return _KsiazkiItems; }
+        //    set
+        //    {
+        //        if (_KsiazkiItems != value)
+        //        {
+        //            _KsiazkiItems = value;
+        //            OnPropertyChanged(() => KsiazkiItems);
+        //        }
+        //    }
+        //}
+
         #endregion
 
         #region Komendy
@@ -122,6 +177,71 @@ namespace MVVMFirma.ViewModels
             DopasujB dopasujB = new DopasujB(db);
             DopasowaneKsiazki = dopasujB.WyszukajKsiazki(Rok, IdAutora, IdTagu);
         }
+
+        //Dodawanie tagów
+        //dodawanie tagów do książki
+        //
+
+        private BaseCommand _DodajTagCommand;
+        public ICommand DodajTagCommand
+        {
+            get
+            {
+                if (_DodajTagCommand == null)
+                {
+                    _DodajTagCommand = new BaseCommand(() => DodajTagClick());
+                }
+                return _DodajTagCommand;
+            }
+        }
+
+        private void DodajTagClick()
+        {
+            try
+            {
+                DopasujB dopasujB = new DopasujB(db);
+                dopasujB.DodajTag(TrescTagu);
+                MessageBox.Show("Tag został dodany.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Błąd: {ex.Message}");
+            }
+        }
+
+        private BaseCommand _TagujCommand;
+        public ICommand TagujCommand
+        {
+            get
+            {
+                if (_TagujCommand == null)
+                {
+                    _TagujCommand = new BaseCommand(() => TagujClick());
+                }
+                return _TagujCommand;
+            }
+        }
+
+        private void TagujClick()
+        {
+            try
+            {
+                if (!IdKsiazki.HasValue || !IdTagu.HasValue)
+                {
+                    MessageBox.Show("Proszę wybrać książkę i tag.");
+                    return;
+                }
+
+                DopasujB dopasujB = new DopasujB(db);
+                dopasujB.PrzypiszTagDoKsiazki(IdKsiazki.Value, IdTagu.Value);
+                MessageBox.Show("Tag został przypisany do książki.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Błąd: {ex.Message}");
+            }
+        }
+
         #endregion
     }
 }

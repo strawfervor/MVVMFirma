@@ -11,8 +11,8 @@
             <RowDefinition Height="33"/>
             <RowDefinition Height="33"/>
             <RowDefinition Height="33"/>
-            <RowDefinition Height="42"/>
-            <RowDefinition Height="42"/>
+            <RowDefinition Height="33"/>
+            <RowDefinition Height="33"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -48,13 +48,76 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="130"/>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
             </Grid.ColumnDefinitions>
             <Label Grid.Column="0" Content="Rok (od):" Margin="3"/>
             <TextBox Grid.Column="1" Margin="4" Text="{Binding Rok}"/>
+            <Button Grid.Column="2" Content="Wyszukaj" Margin="3" Command="{Binding WykonajCommand}"/>
         </Grid>
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Content="Wyszukane książki:" Margin="3"/>
+            <Label Grid.Column="1" Content="Zarządzanie tagami:" Margin="3"/>
+        </Grid>
+        <Grid Grid.Row="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <ListBox Grid.Column="0" Margin="3" ItemsSource="{Binding DopasowaneKsiazki}" />
+            
+            
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                
+                
+                <Grid Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="200"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Label Grid.Row="0">Dodaj tagi:</Label>
+                    <Label Grid.Column="0" Grid.Row="1" Margin="0,8,0,8" Content="Treść tagu:"/>
+                    <TextBox Grid.Column="1" Grid.Row="1" Margin="0,8,0,8" Text="{Binding Path=TrescTagu, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <Button Grid.Row="4" Content="Wykonaj" Margin="3" Command="{Binding WykonajCommand}"/>
+                    <Button Grid.Column="0" Grid.Row="2" Content="Dodaj tag" Margin="3" Command="{Binding DodajTagCommand}"/>
 
-        <ListBox Grid.Row="5" Margin="3" ItemsSource="{Binding DopasowaneKsiazki}" />
+                </Grid>
+
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Row="0">Otaguj książkę:</Label>
+
+                    <Label Grid.Row="1" Grid.Column="0" Content="Wybierz książkę:" Margin="3"/>
+                    <ComboBox Grid.Row="2" Grid.Column="1" Margin="3" 
+                          ItemsSource="{Binding KsiazkiItems}" 
+                          DisplayMemberPath="Value" 
+                          SelectedValuePath="Key" 
+                          SelectedValue="{Binding Path=IdKsiazki, Mode=TwoWay}"/>
+
+                    <Button Grid.Column="0" Grid.Row="3" Content="Dodaj tag do wybranej książki" Margin="3" Command="{Binding TagujCommand}"/>
+                </Grid>
+
+            </Grid>
+        </Grid>
     </Grid>
 </UserControl>

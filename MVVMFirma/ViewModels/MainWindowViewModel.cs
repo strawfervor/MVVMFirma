@@ -153,7 +153,7 @@ namespace MVVMFirma.ViewModels
                     "Manager wypożyczeń",
                     new BaseCommand(() => this.ShowAll(new RaportWypozyczenViewModel()))),
                 new CommandViewModel(
-                    "Wyszkiwanie książki",
+                    "Manager tagów/wyszukiwanie",
                     new BaseCommand(() => this.ShowAll(new DopasujViewModel()))),
                 new CommandViewModel(
                     "Karta biblioteczna",
