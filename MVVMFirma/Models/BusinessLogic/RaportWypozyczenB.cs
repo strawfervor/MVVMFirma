@@ -31,7 +31,7 @@ namespace MVVMFirma.Models.BusinessLogic
         //                pozycja.NumerWewnetrznyEgzemplarzu
         //        ).FirstOrDefault()?.ToString();
         //}
-        public List<string> RaportWypozyczen(int idKsiazki, DateTime DataOd, DateTime DataDo)
+        public List<string> RaportWypozyczen(int? idKsiazki, DateTime DataOd, DateTime DataDo)
         {
             var wyniki = (
                 from pozycja in db.Wypozyczenia

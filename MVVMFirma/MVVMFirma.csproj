@@ -181,6 +181,7 @@
     <Compile Include="ViewModels\DopasujViewModel.cs" />
     <Compile Include="ViewModels\DostepnoscViewModel.cs" />
     <Compile Include="ViewModels\JedenViewModel.cs" />
+    <Compile Include="ViewModels\KartaBibliotecznaViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\NowaKaraViewModel.cs" />
     <Compile Include="ViewModels\NowaKsiazkaViewModel.cs" />
@@ -224,6 +225,9 @@
       <DependentUpon>DostepnoscKsiazkiView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\JedenViewBase.cs" />
+    <Compile Include="Views\KartaBiblioteczna.xaml.cs">
+      <DependentUpon>KartaBiblioteczna.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -374,6 +378,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\DostepnoscKsiazkiView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\KartaBiblioteczna.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

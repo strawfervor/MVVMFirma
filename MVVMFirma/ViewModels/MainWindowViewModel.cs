@@ -150,14 +150,14 @@ namespace MVVMFirma.ViewModels
                     "███ Inne: ███",
                     new BaseCommand(() => this.ShowAll(new RaportWypozyczenViewModel()))),
                 new CommandViewModel(
-                    "Dostępność egzemplarzy",
-                    new BaseCommand(() => this.ShowAll(new DostepnoscViewModel()))),
-                new CommandViewModel(
-                    "Raport Wypożyczeń",
+                    "Manager wypożyczeń",
                     new BaseCommand(() => this.ShowAll(new RaportWypozyczenViewModel()))),
                 new CommandViewModel(
                     "Wyszkiwanie książki",
                     new BaseCommand(() => this.ShowAll(new DopasujViewModel()))),
+                new CommandViewModel(
+                    "Karta biblioteczna",
+                    new BaseCommand(() => this.ShowAll(new KartaBibliotecznaViewModel()))),
             };
         }
         #endregion

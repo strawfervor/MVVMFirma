@@ -32,7 +32,7 @@ namespace MVVMFirma.Models.BusinessLogic
         //                pozycja.NumerWewnetrznyEgzemplarzu
         //        ).FirstOrDefault()?.ToString();
         //}
-        public List<string> ListaDostepnych(int idKsiazki)
+        public List<string> ListaDostepnych(int? idKsiazki)
         {
             return (
                 from pozycja in db.Egzemplarze

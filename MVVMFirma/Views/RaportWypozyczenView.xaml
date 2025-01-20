@@ -32,6 +32,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="130"/>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="130"/>
             </Grid.ColumnDefinitions>
             <Label Grid.Column="0" Content="Wybierz książkę:" Margin="3"/>
             <ComboBox Grid.Column="1" Margin="3" 
@@ -39,10 +40,84 @@
                   DisplayMemberPath="Value" 
                   SelectedValuePath="Key" 
                   SelectedValue="{Binding Path=IdKsiazki, Mode=TwoWay}"/>
+            <Button Grid.Row="3" Grid.Column="2" Content="Pokaż raport" Margin="3" Command="{Binding WykonajCommand}"/>
         </Grid>
-        <Button Grid.Row="3" Content="Wykonaj" Margin="3" Command="{Binding WykonajCommand}"/>
-        <Label Grid.Row="4" Content="Lista wypożyczeń:" Margin="3" HorizontalContentAlignment="Center"/>
-        <ListBox Grid.Row="5" Margin="3" ItemsSource="{Binding RaportWypozyczen}" />
+        
+        <Label Grid.Row="3" Content="Dostępność egzemplarzy:" Margin="3" HorizontalContentAlignment="Center"/>
+
+
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="130"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="130"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Content="Wybierz książkę:" Margin="3"/>
+            <ComboBox Grid.Column="1" Margin="3" 
+                  ItemsSource="{Binding KsiazkiItems}" 
+                  DisplayMemberPath="Value" 
+                  SelectedValuePath="Key" 
+                  SelectedValue="{Binding Path=IdKsiazki, Mode=TwoWay}"/>
+            <Button Grid.Row="5" Grid.Column="2" Content="Pokaż dostępne egzemplarze" Margin="3" Command="{Binding WykonajCommandD}"/>
+        </Grid>
+
+        <Grid Grid.Row="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <ListBox Margin="3" Grid.Column="0" ItemsSource="{Binding RaportWypozyczen}" />
+            <Grid Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="50"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Content="Wypożycz książkę:"/>
+                <Label Grid.Column="0" Grid.Row="1" Margin="0,8,0,8" Content="Czytelnik"/>
+                <ComboBox Grid.Column="1" Grid.Row="1" Margin="0,8,0,8"
+                ItemsSource="{Binding CzytelnicyItems}" 
+                DisplayMemberPath="Value" 
+                SelectedValuePath="Key" 
+                SelectedValue="{Binding Path=IdCzytelnika, Mode=TwoWay}"/>
+                <Label Grid.Column="0" Grid.Row="2" Margin="0,8,0,8" Content="Data wypożyczenia"/>
+                <DatePicker Grid.Column="1" Grid.Row="2" Margin="0,8,0,8" SelectedDate="{Binding Path=DataWypozyczenia, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <Label Grid.Column="0" Grid.Row="3" Margin="0,8,0,8" Content="Data zwrotu"/>
+                <DatePicker Grid.Column="1" Grid.Row="3" Margin="0,8,0,8" SelectedDate="{Binding Path=DataZwrotu, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <Button Grid.Row="4" Grid.Column="1" Content="Wypożycz" Margin="3" Command="{Binding SaveCommand}"/>
+            </Grid>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        </Grid>
 
     </Grid>
 </UserControl>

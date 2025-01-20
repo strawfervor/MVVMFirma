@@ -11,7 +11,7 @@ using System.Windows.Input;
 
 namespace MVVMFirma.ViewModels
 {
-    public class RaportWypozyczenViewModel : WorkspaceViewModel
+    public class RaportWypozyczenViewModel : JedenViewModel<Wypozyczenia>//WorkspaceViewModel
     {
         #region DB
         BibliotekaEntities db;
@@ -19,11 +19,12 @@ namespace MVVMFirma.ViewModels
         #endregion
         #region Konstruktor
         public RaportWypozyczenViewModel()
+            : base("Manager wypożyczeń")
         {
-            base.DisplayName = "Raport Wypożyczeń";
             db = new BibliotekaEntities();
             DataOd = DateTime.Now;
             DataDo = DateTime.Now;
+            item = new Wypozyczenia();
         }
         #endregion
 
@@ -72,20 +73,33 @@ namespace MVVMFirma.ViewModels
             }
         }
 
-        private int _IdKsiazki;
-        public int IdKsiazki
+        //private int _IdKsiazki;
+        //public int IdKsiazki
+        //{
+        //    get
+        //    {
+        //        return _IdKsiazki;
+        //    }
+        //    set
+        //    {
+        //        if (value != _IdKsiazki)
+        //        {
+        //            _IdKsiazki = value;
+        //            OnPropertyChanged(() => IdKsiazki);
+        //        }
+        //    }
+        //}
+
+        public int? IdKsiazki
         {
             get
             {
-                return _IdKsiazki;
+                return item.IdKsiazki;
             }
             set
             {
-                if (value != _IdKsiazki)
-                {
-                    _IdKsiazki = value;
-                    OnPropertyChanged(() => IdKsiazki);
-                }
+                item.IdKsiazki = value;
+                OnPropertyChanged(() => IdKsiazki);
             }
         }
 
@@ -97,9 +111,95 @@ namespace MVVMFirma.ViewModels
                 return new KsiazkaB(db).GetKsiazkiKeyAndValueItems();
             }
         }
+
+
+        //Rzeczy z DostępnośćViewModel:
+
+        //dla każdego pola istotnego dla obliczeń tworzymy pole i właściwość
+
+        private List<string> _DostepneEgzemplarze;
+        public List<string> DostepneEgzemplarze
+        {
+            get { return _DostepneEgzemplarze; }
+            set
+            {
+                if (_DostepneEgzemplarze != value)
+                {
+                    _DostepneEgzemplarze = value;
+                    OnPropertyChanged(() => DostepneEgzemplarze);
+                }
+            }
+        }
+
+
+        //z nowych wypożyczeń::
+
+        public int? IdCzytelnika
+        {
+            get
+            {
+                return item.IdCzytelnika;
+            }
+            set
+            {
+                item.IdCzytelnika = value;
+                OnPropertyChanged(() => IdCzytelnika);
+            }
+        }
+
+        public DateTime? DataWypozyczenia
+        {
+            get
+            {
+                return item.DataWypozyczenia;
+            }
+            set
+            {
+                item.DataWypozyczenia = value;
+                OnPropertyChanged(() => DataWypozyczenia);
+            }
+        }
+
+        public DateTime? DataZwrotu
+        {
+            get
+            {
+                return item.DataZwrotu;
+            }
+            set
+            {
+                item.DataZwrotu = value;
+                OnPropertyChanged(() => DataZwrotu);
+            }
+        }
+
         #endregion
 
+        //end region polaaaa ^^^^^
+
+
         //region żeby działał button, musi tu być podpięta komenda:
+
+        #region Właściwości dla ComboBoxów
+
+        public IQueryable<KeyAndValue> CzytelnicyItems
+        {
+            get
+            {
+                return new CzytelnicyB(bibliotekaEntites).GetCzytelnicyKeyAndValueItems();
+            }
+        }
+
+
+
+        #endregion
+
+
+
+        //end region comboboxy ^^^^^
+
+
+
         #region Komendy
         //to jest komenda która zostanie podpięta pod przycisk Wykonaj i która wywoła wykonajDostepnoscClick()
         private BaseCommand _WykonajCommand;
@@ -119,6 +219,35 @@ namespace MVVMFirma.ViewModels
         {
             RaportWypozyczen = new RaportWypozyczenB(db).RaportWypozyczen(IdKsiazki, DataOd, DataDo);
         }
+
+        //dostępność przeniesiona tutaj z DostępnośćViewModel //zmieniono na WykonajCommandD
+
+        private BaseCommand _WykonajCommandD;
+        public ICommand WykonajCommandD
+        {
+            get
+            {
+                if (_WykonajCommandD == null)
+                {
+                    _WykonajCommandD = new BaseCommand(() => wykonajDostepnoscClick());
+                }
+                return _WykonajCommandD;
+            }
+        }
+
+        
+        private void wykonajDostepnoscClick()
+        {
+            RaportWypozyczen = new DostepnoscB(db).ListaDostepnych(IdKsiazki);//raport wypożyczeń bo lista jest bindowana pod tą zmienną
+        }
+
+        public override void Save()
+        {
+            bibliotekaEntites.Wypozyczenia.Add(item);//dodaje wypozyczenie do lokalnej kolekcji
+            bibliotekaEntites.SaveChanges();//zapisuje zmiany do bazy danych
+        }
+
+
         #endregion
 
     }
