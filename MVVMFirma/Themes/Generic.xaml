@@ -16,8 +16,9 @@
                         <ToolBar Grid.Row="0" Margin="0,2,0,2" Background="Beige">
                             <ToggleButton Content="Dodaj" Margin="0,2,0,2" Command="{Binding AddCommand}"/>
                             <ToggleButton Content="Edytuj" Margin="0,2,0,2"/>
-                            <ToggleButton Content="Kasuj" Margin="0,2,0,2"/>
+                            <ToggleButton Content="Kasuj" Margin="0,2,0,2" Command="{Binding DeleteCommand}"/>
                             <ToggleButton Content="Odswiez" Margin="0,2,0,2" Command="{Binding LoadCommand}"/>
+                            <ToggleButton Content="Eksport" Margin="0,2,0,2" Command="{Binding ExportCommand}"/>
                         </ToolBar>
                         <StackPanel Grid.Row="1" Background="Beige">
                             <Grid>

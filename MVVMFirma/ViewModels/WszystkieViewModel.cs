@@ -4,6 +4,7 @@ using MVVMFirma.Models.Entities;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -136,6 +137,42 @@ namespace MVVMFirma.ViewModels
             //tem komunikat odbierze MainWindowViewModel, które odpowiada za otwieranie zadkładek/okien
             Messenger.Default.Send(DisplayName + "Add");
         }
+        #endregion
+
+        #region Dodatkowe sprawy:
+
+        private BaseCommand _ExportCommand;
+        public ICommand ExportCommand
+        {
+            get
+            {
+                if (_ExportCommand == null)
+                    _ExportCommand = new BaseCommand(() => ExportToCSV());
+                return _ExportCommand;
+            }
+        }
+
+        private void ExportToCSV()
+        {
+            if (List != null && List.Any())
+            {
+                var sb = new StringBuilder();
+                var properties = typeof(T).GetProperties();
+
+                // Dodaj nagłówki
+                sb.AppendLine(string.Join(",", properties.Select(p => p.Name)));
+
+                // Dodaj dane
+                foreach (var item in List)
+                {
+                    sb.AppendLine(string.Join(",", properties.Select(p => p.GetValue(item, null))));
+                }
+
+                // Zapisz do pliku
+                File.WriteAllText(DisplayName + "_export.csv", sb.ToString());
+            }
+        }
+
         #endregion
 
     }
